@@ -1,7 +1,8 @@
 #source /usr/share/defaults/etc/profile
 export PATH="$PATH:$HOME/.bin"
 
-alias l='ls -B'
+alias l='ls -B --color=auto'
+alias ls='ls --color=auto'
 alias rm='rm -i'
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
