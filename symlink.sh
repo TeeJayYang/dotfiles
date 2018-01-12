@@ -8,7 +8,7 @@ shopt -s nullglob
 shopt -s dotglob
 
 ## Link to ~
-for folder in vim bash; do
+for folder in vim system; do
     for f in $DOTFILES_DIR/$folder/*; do
         ln -sfv "$f" ~
     done

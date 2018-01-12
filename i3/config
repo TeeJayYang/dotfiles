@@ -165,7 +165,8 @@ bindsym XF86AudioNext exec mpc next
 bindsym XF86AudioPrev exec mpc prev
 
 # Touchpad shit
-exec --no-startup-id /usr/bin/xinput set-prop "ELAN1010:00 04F3:3012 Touchpad" "libinput Natural Scrolling Enabled" 1
+# exec --no-startup-id /usr/bin/xinput set-prop "ELAN1010:00 04F3:3012 Touchpad" "libinput Natural Scrolling Enabled" 1
+exec_always --no-startup-id setup-touchpad
 
 # Power shit
 # lock screen and suspend
@@ -174,6 +175,7 @@ bindsym $mod+Shift+Home exec --no-startup-id "i3lock -ti ~/.config/i3/lock.png"
 bindsym $mod+Shift+x exec --no-startup-id "i3lock -ti ~/.config/i3/lock.png"
 ########## Styling shit and autostartup #################
 exec_always --no-startup-id compton -f --config ~/.config/compton/compton.conf
+exec_always --no-startup-id nm-applet
 exec feh --bg-scale ~/.config/i3/wallpaper.png
 exec --no-startup-id redshift
 exec --no-startup-id gnome-settings-daemon
