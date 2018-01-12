@@ -1,5 +1,4 @@
 set number          "set linenumbers
-set paste           "makes sure that pasting things doesn't break everything
 
 set wrap            " word wrap
 set linebreak       " only wrap at breaking characters
@@ -20,13 +19,22 @@ set expandtab       " Expand TABs to spaces
 set autoindent
 set smartindent
 
-"braces, brackets, and parentheses oh my!
+" braces, brackets, and parentheses oh my!
 inoremap {<cr> {<cr>}<c-o><s-o>
 inoremap [<cr> [<cr>]<c-o><s-o>
 inoremap (<cr> (<cr>)<c-o><s-o>
 
-"collapsing with space
-nnoremap <space> za
+" vim window navigation 
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+set splitbelow
+set splitright
+
+" collapsing with space
+" nnoremap <space> za
 
 "syntax highlighting
 " for Jenkinsfile
@@ -44,12 +52,49 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   augroup END
 endif
 call plug#begin('~/.vim/plugged')
+" QoL things
+Plug 'tpope/vim-sensible'
+
+" easy commenting
+Plug 'tpope/vim-commentary'
+
+" repeating plugin maps
+Plug 'tpope/vim-repeat'
+
+" text surrounding
+Plug 'tpope/vim-surround'
+
+" backet mappings
+Plug 'tpope/vim-unimpaired'
+
+" unix commands in vim
+Plug 'tpope/vim-eunuch'
+
+" indent char
+Plug 'yggdroot/indentline'
+
+" Auto brackets
+" Plug 'raimondi/delimitMate'
 
 " markdown previewing
 Plug 'iamcco/markdown-preview.vim'
 
 call plug#end()
 " ===========================Plugins
+
+" Plugin Configs====================
+" config for indentline
+let g:indentLine_color_term = 239
+let g:indentLine_char='┊'
+let g:indentLine_fileTypeExclude = ['markdown', 'json']
+
+" config for delimitmate
+" let g:delimitMate_autoclose = 1
+" let g:delimitMate_expand_space = 1
+" let g:delimitMate_expand_cr = 1
+" let g:delimitMate_matchpairs = '(:),[:],{:}'
+" ====================Plugin Configs
+
 
 " statusline========================
 highlight statusLineDark ctermfg=12 ctermbg=0
@@ -93,8 +138,3 @@ set statusline+=\ %p%%
 set statusline+=\ %l:%c
 set statusline+=\ 
 " ========================statusline
-
-" function Oneline() 
-"   ggVG100<:%s/\n//g^M
-" endfunc
-
