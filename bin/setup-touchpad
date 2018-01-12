@@ -3,5 +3,7 @@
 for ID in `xinput list | grep -Eio 'touchpad\s*id\=[0-9]{1,2}' | grep -Eo '[0-9]{1,2}'`; do
   xinput set-prop $ID "libinput Natural Scrolling Enabled" 1
   xinput set-prop $ID "libinput Tapping Enabled" 0
+  xinput set-prop $ID "Synaptics Tap Time" 0
+  xinput set-prop $ID "Synaptics Scrolling Distance" -114, -144
 done
 
