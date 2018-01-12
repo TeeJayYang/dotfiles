@@ -1,6 +1,3 @@
-#source /usr/share/defaults/etc/profile
-export PATH="$HOME/bin:$HOME/.bin:$HOME/.local:$PATH"
-
 alias l='ls -B --color=auto'
 alias ls='ls --color=auto'
 alias rm='rm -i'

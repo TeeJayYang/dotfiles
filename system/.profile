@@ -1,2 +1,2 @@
 source /usr/share/defaults/etc/profile
-PATH="$HOME/bin:$HOME/.bin:$HOME/.local:$PATH"
+export PATH="$HOME/bin:$HOME/.bin:$HOME/.local:$PATH"
