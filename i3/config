@@ -234,3 +234,5 @@ bar {
             urgent_workspace #ff5757 #ff5757 #fafafa
         }
 }
+
+exec_always --no-startup-id setup-displays

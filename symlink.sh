@@ -14,6 +14,15 @@ for folder in vim bash; do
     done
 done
 
+## Link to ~/.$folder
+for folder in bin; do
+  # rm -rf ~/.$folder
+  mkdir -pv ~/.$folder
+  for f in $DOTFILES_DIR/$folder/*; do
+    ln -sfv "$f" ~/.$folder
+  done
+done
+
 ## Link to .config/$folder
 for folder in compton i3 i3status; do
     mkdir -pv ~/.config/$folder
