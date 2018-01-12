@@ -173,8 +173,7 @@ bindsym $mod+Shift+End exec --no-startup-id "i3lock -ti ~/.config/i3/lock.png &&
 bindsym $mod+Shift+Home exec --no-startup-id "i3lock -ti ~/.config/i3/lock.png"
 bindsym $mod+Shift+x exec --no-startup-id "i3lock -ti ~/.config/i3/lock.png"
 ########## Styling shit and autostartup #################
-# exec_always --no-startup-id compton -f --config ~/.config/compton/config 
-exec_always --no-startup-id compton -f 
+exec_always --no-startup-id compton -f --config ~/.config/compton/compton.conf
 exec feh --bg-scale ~/.config/i3/wallpaper.png
 exec --no-startup-id redshift
 exec --no-startup-id gnome-settings-daemon

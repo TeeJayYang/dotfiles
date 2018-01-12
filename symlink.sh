@@ -15,7 +15,7 @@ for folder in vim bash; do
 done
 
 ## Link to .config/$folder
-for folder in i3 i3status; do
+for folder in compton i3 i3status; do
     mkdir -pv ~/.config/$folder
     for f in $DOTFILES_DIR/$folder/*; do
         ln -sfv "$f" ~/.config/$folder
