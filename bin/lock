@@ -21,12 +21,16 @@ RY=$(echo $R | cut -d' ' -f 3)
 
 SR=$(xrandr --query | grep ' connected' | sed 's/primary //' | cut -f3 -d' ')
 for RES in $SR
-  do
+do
   # monitor position/offset
   SRX=$(echo $RES | cut -d'x' -f 1)                   # x pos
   SRY=$(echo $RES | cut -d'x' -f 2 | cut -d'+' -f 1)  # y pos
   SROX=$(echo $RES | cut -d'x' -f 2 | cut -d'+' -f 2) # x offset
   SROY=$(echo $RES | cut -d'x' -f 2 | cut -d'+' -f 3) # y offset
+  # account for monitors that are connected but are off
+  if [ "$SROX" = "(normal" ] || [ "$SROY" = "(normal" ]; then
+    continue
+  fi
   PX=$(($SROX + $SRX/2 - $RX/2))
   PY=$(($SROY + $SRY/2 - $RY/2))
 
