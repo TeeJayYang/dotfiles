@@ -7,9 +7,9 @@ set nolist          " list disables linebreak
 set mouse=a         " allow proper scrolling with mouse wheel
 set hlsearch        " hightlight search terms
 set tabstop=2       " The width of a TAB is set to 2.
-                    " Still it is a \t. It is just that
-                    " Vim will interpret it to be having
-                    " a width of 4.
+                  " Still it is a \t. It is just that
+                  " Vim will interpret it to be having
+                  " a width of 4.
 
 set shiftwidth=2    " Indents will have a width of 2
 
@@ -33,6 +33,10 @@ nnoremap <C-H> <C-W><C-H>
 set splitbelow
 set splitright
 
+" indenting in visual mode stays in visual mode
+xnoremap > >gv
+xnoremap < <gv
+
 " collapsing with space
 " nnoremap <space> za
 
@@ -51,7 +55,17 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
   augroup END
 endif
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.vim/bundle')
+" color scheme
+" Plug 'cseelus/vim-colors-lucid'
+" set background=dark
+" colorscheme lucid
+"" Highlighting for transparent background
+highlight Normal ctermbg=none
+highlight NonText ctermbg=none
+highlight LineNr ctermbg=none
+highlight VertSplit ctermbg=none
+
 " QoL things
 Plug 'tpope/vim-sensible'
 
@@ -62,10 +76,10 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 
 " text surrounding
-Plug 'tpope/vim-surround'
+" Plug 'tpope/vim-surround'
 
 " backet mappings
-Plug 'tpope/vim-unimpaired'
+" Plug 'tpope/vim-unimpaired'
 
 " unix commands in vim
 Plug 'tpope/vim-eunuch'
