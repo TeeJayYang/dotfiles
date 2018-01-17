@@ -24,6 +24,10 @@ inoremap {<cr> {<cr>}<c-o><s-o>
 inoremap [<cr> [<cr>]<c-o><s-o>
 inoremap (<cr> (<cr>)<c-o><s-o>
 
+" more intuitive line navigation
+nnoremap j gj
+nnoremap k gk
+
 " vim window navigation 
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
