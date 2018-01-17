@@ -1,0 +1,54 @@
+bin:
+  link: "~/.bin"
+
+compton:
+  link: "~/.config/compton"
+  dependencies:
+    - "compton"
+
+dunst:
+  link: "~/.config/dunst"
+  dependencies:
+    - "dunst"
+
+git:
+  link: "~"
+
+i3:
+  link:
+    - "*": "~/.config/i3"
+    - ".*": "~/.config/i3"
+  dependencies:
+    - "i3lock"
+    - "rofi"
+    - "imagemagick"
+    - "xbacklight"
+    - "xclip"
+    - "redshift"
+    - "ranger"
+    - "feh"
+  postlink:
+    - "mkdir -p ~/.tmp"
+
+i3status:
+  link:
+    - "*": "~/.config/i3status"
+    - ".*": "~/.config/i3status"
+  dependencies:
+    - "i3status"
+
+system:
+  link: "~"
+
+# Install `system.devel` component
+# sudo eopkg install -c system.devel
+vim:
+  link:
+    - minisnip: "~/.vim"
+    - after: "~/.vim"
+    - "*": "~"
+    - ".*": "~"
+  dependencies:
+    - "vim"
+    - "python-pip"
+    - "python3-pip"

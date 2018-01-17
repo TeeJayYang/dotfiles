@@ -175,6 +175,7 @@ bindsym $mod+Shift+Home exec lock
 bindsym $mod+Shift+x exec lock
 ########## Styling shit and autostartup #################
 exec_always --no-startup-id compton -f --config ~/.config/compton/compton.conf
+exec --no-startup-id dunst -c ~/.config/dunst/dunstrc
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id setup-displays
 exec_always feh --bg-scale ~/.config/i3/wallpaper.png

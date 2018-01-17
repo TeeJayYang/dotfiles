@@ -61,9 +61,10 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 call plug#begin('~/.vim/bundle')
 " color scheme
-" Plug 'cseelus/vim-colors-lucid'
-" set background=dark
-" colorscheme lucid
+" dynamic colorscheme
+" Plug 'dylanaraps/wal.vim'
+" colorscheme wal
+
 "" Highlighting for transparent background
 highlight Normal ctermbg=none
 highlight NonText ctermbg=none
