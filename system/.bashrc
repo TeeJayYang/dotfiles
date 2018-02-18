@@ -16,3 +16,7 @@ function ranger-cd {
     rm -f -- "$tempfile"
 }
 alias ranger='ranger-cd'
+
+export VISUAL=vim
+export EDITOR="$VISUAL"
+set -o vi

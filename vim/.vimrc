@@ -17,12 +17,11 @@ set softtabstop=2   " Sets the number of columns for a TAB
 
 set expandtab       " Expand TABs to spaces
 set autoindent
-set smartindent
 
 " braces, brackets, and parentheses oh my!
-inoremap {<cr> {<cr>}<c-o><s-o>
-inoremap [<cr> [<cr>]<c-o><s-o>
-inoremap (<cr> (<cr>)<c-o><s-o>
+inoremap {<cr> {<CR>}<ESC>ko<Tab>
+inoremap [<cr> [<CR>]<ESC>ko<Tab>
+inoremap (<cr> (<CR>)<ESC>ko<Tab>
 
 " more intuitive line navigation
 nnoremap j gj
@@ -40,6 +39,11 @@ set splitright
 " indenting in visual mode stays in visual mode
 xnoremap > >gv
 xnoremap < <gv
+
+" switching case in visual mode stays in visual mode
+xnoremap u ugv
+xnoremap U ugv
+xnoremap ~ ~gv
 
 " collapsing with space
 " nnoremap <space> za
