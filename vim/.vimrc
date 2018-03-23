@@ -26,6 +26,8 @@ inoremap (<cr> (<CR>)<ESC>ko<Tab>
 " more intuitive line navigation
 nnoremap j gj
 nnoremap k gk
+xnoremap j gj
+xnoremap k gk
 
 " vim window navigation 
 nnoremap <C-J> <C-W><C-J>

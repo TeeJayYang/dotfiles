@@ -1,6 +1,7 @@
 alias l='ls -B --color=auto'
 alias ls='ls --color=auto'
 alias rm='rm -i'
+alias python='python3'
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
