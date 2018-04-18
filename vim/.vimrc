@@ -47,6 +47,14 @@ xnoremap u ugv
 xnoremap U ugv
 xnoremap ~ ~gv
 
+" Ctrl Backspace to delete words
+noremap! <C-BS> <C-w>
+noremap! <C-h> <C-w>
+inoremap <C-w> <C-\><C-o>dB
+inoremap <C-BS> <C-\><C-o>db
+
+set backspace=indent,eol,start
+
 " collapsing with space
 " nnoremap <space> za
 
