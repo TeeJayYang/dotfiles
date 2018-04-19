@@ -55,6 +55,10 @@ inoremap <C-BS> <C-\><C-o>db
 
 set backspace=indent,eol,start
 
+" Remapping the command line window because
+" I'm a terrible typist
+map q: :q
+
 " collapsing with space
 " nnoremap <space> za
 
