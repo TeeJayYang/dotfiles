@@ -17,6 +17,7 @@ set softtabstop=2   " Sets the number of columns for a TAB
 
 set expandtab       " Expand TABs to spaces
 set autoindent
+set nobackup
 
 " braces, brackets, and parentheses oh my!
 inoremap {<cr> {<CR>}<ESC>ko<Tab>
@@ -116,6 +117,8 @@ Plug 'yggdroot/indentline'
 " markdown previewing
 Plug 'iamcco/markdown-preview.vim'
 
+Plug 'lervag/vimtex'
+
 call plug#end()
 " ===========================Plugins
 
@@ -130,6 +133,12 @@ let g:indentLine_fileTypeExclude = ['markdown', 'json']
 " let g:delimitMate_expand_space = 1
 " let g:delimitMate_expand_cr = 1
 " let g:delimitMate_matchpairs = '(:),[:],{:}'
+
+" config for vimtex
+let g:vimtex_compiler_latexmk = {'callback' : 0}
+" let g:latex_view_general_viewer = 'zathura'
+let g:vimtex_view_method = 'zathura'
+let g:tex_conceal = ''
 " ====================Plugin Configs
 
 
