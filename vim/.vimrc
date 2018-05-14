@@ -18,6 +18,7 @@ set softtabstop=2   " Sets the number of columns for a TAB
 set expandtab       " Expand TABs to spaces
 set autoindent
 set nobackup
+set textwidth=0 wrapmargin=0
 
 " braces, brackets, and parentheses oh my!
 inoremap {<cr> {<CR>}<ESC>ko<Tab>
@@ -139,6 +140,7 @@ let g:vimtex_compiler_latexmk = {'callback' : 0}
 " let g:latex_view_general_viewer = 'zathura'
 let g:vimtex_view_method = 'zathura'
 let g:tex_conceal = ''
+
 " ====================Plugin Configs
 
 
