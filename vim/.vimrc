@@ -18,12 +18,17 @@ set softtabstop=2   " Sets the number of columns for a TAB
 set expandtab       " Expand TABs to spaces
 set autoindent
 set nobackup
-set textwidth=0 wrapmargin=0
+set undofile        " Persistent undo
+set undodir=~/.vim/undodir
+
+map <Space> <Nop>
+let g:mapleader="\<Space>"
+let g:maplocalleader="\<Space>"
 
 " braces, brackets, and parentheses oh my!
-inoremap {<cr> {<CR>}<ESC>ko<Tab>
-inoremap [<cr> [<CR>]<ESC>ko<Tab>
-inoremap (<cr> (<CR>)<ESC>ko<Tab>
+" inoremap {<cr> {<CR>}<ESC>ko<Tab>
+" inoremap [<cr> [<CR>]<ESC>ko<Tab>
+" inoremap (<cr> (<CR>)<ESC>ko<Tab>
 
 " more intuitive line navigation
 nnoremap j gj
@@ -61,8 +66,14 @@ set backspace=indent,eol,start
 " I'm a terrible typist
 map q: :q
 
+" leader stuff
+" reloading .vimrc
+noremap <leader>rr :source ~/.vimrc<CR>
+
+let g:Tex_leader="\<Space>"
+
 " collapsing with space
-" nnoremap <space> za
+nnoremap <leader>a za
 
 "syntax highlighting
 " for Jenkinsfile
@@ -101,7 +112,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 
 " text surrounding
-" Plug 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 
 " backet mappings
 " Plug 'tpope/vim-unimpaired'
@@ -113,12 +124,16 @@ Plug 'tpope/vim-eunuch'
 Plug 'yggdroot/indentline'
 
 " Auto brackets
-" Plug 'raimondi/delimitMate'
+Plug 'raimondi/delimitMate'
 
 " markdown previewing
 Plug 'iamcco/markdown-preview.vim'
 
 Plug 'lervag/vimtex'
+
+" markdown pandoc
+Plug 'vim-pandoc/vim-pandoc-syntax'
+Plug 'vim-pandoc/vim-pandoc'
 
 call plug#end()
 " ===========================Plugins
@@ -130,10 +145,12 @@ let g:indentLine_char='┊'
 let g:indentLine_fileTypeExclude = ['markdown', 'json']
 
 " config for delimitmate
-" let g:delimitMate_autoclose = 1
-" let g:delimitMate_expand_space = 1
-" let g:delimitMate_expand_cr = 1
-" let g:delimitMate_matchpairs = '(:),[:],{:}'
+let g:delimitMate_autoclose = 1
+let g:delimitMate_expand_space = 1
+let g:delimitMate_expand_cr = 1
+let g:delimitMate_matchpairs = '(:),[:],{:}'
+au FileType pandoc let b:delimitMate_quotes = "\" '"
+au FileType Markdown let b:delimitMate_quotes = "\" '"
 
 " config for vimtex
 let g:vimtex_compiler_latexmk = {'callback' : 0}
@@ -141,6 +158,18 @@ let g:vimtex_compiler_latexmk = {'callback' : 0}
 let g:vimtex_view_method = 'zathura'
 let g:tex_conceal = ''
 
+" config for vim-markdown
+let g:tex_conceal = ""
+let g:vim_markdown_math = 1
+
+" Pandoc vim
+" let g:pandoc#command#autoexec_on_writes = 1
+" let g:pandoc#command#autoexec_command = "Pandoc pdf"
+let g:pandoc#syntax#conceal#blacklist = ["codeblock_start","codeblock_delim","inlinecode", "quotes","list"]
+let g:pandoc#syntax#conceal#cchar_overrides = {"atx":"#"}
+let g:pandoc#syntax#style#use_definition_lists = 0
+let g:pandoc#modules#disabled = ["folding"]
+noremap <leader>- :Pandoc pdf<CR>
 " ====================Plugin Configs
 
 

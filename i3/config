@@ -30,7 +30,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec gnome-terminal --working-directory="`xcwd`" 
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -40,11 +40,15 @@ bindsym $mod+Shift+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+semicolon exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu -i -matching fuzzy'
+bindsym $mod+semicolon exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu -i'
+bindsym $mod+apostrophe exec "rofi -show ssh -i"
+bindsym $mod+Shift+apostrophe exec "rofi -show run -i" 
 
+# Screenshotting stuff
+bindsym Print exec --no-startup-id rm ~/.tmp/tmp.png -f && scrot ~/.tmp/tmp.png && xclip ~/.tmp/tmp.png -selection clipboard -t image/png && notify-send -u "low" "Took screenshot (window)"
+bindsym --release Shift+Print exec --no-startup-id rm ~/.tmp/tmp.png -f && scrot -s ~/.tmp/tmp.png && xclip ~/.tmp/tmp.png -selection clipboard -t image/png && notify-send -u "low" "Took screenshot (area)"
 
 # start rofi
-# bindsym $mod+semicolon exec rofi -show run 
 
 # change focus
 bindsym $mod+h focus left
@@ -94,7 +98,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+Shift+a focus child
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -210,7 +214,7 @@ set $transparent  #00000050
 
 # Window colors
 #                       border     background    text      indicator
-client.focused          $base03    $blue         $base2    #00ff00
+client.focused          $base03    $red         $base2    #00ff00
 client.unfocused        $base03    $base03       $base2    #00ff00
 client.focused_inactive $base03    $base03       $base2    #00ff00
 client.urgent           $base03    $base03       $red      #00ff00
