@@ -13,3 +13,6 @@ shell           ->  bash
 terminal        ->  urxvt
 dmenu           ->  rofi
 ```
+
+# Screenshots
+![](screenshots/2018_07_14.png "Fake Dirty")
