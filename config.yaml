@@ -27,6 +27,8 @@ i3:
     - "redshift"
     - "ranger"
     - "feh"
+    - "network-manager"
+    - "scrot"
   postlink:
     - "mkdir -p ~/.tmp"
 
@@ -37,8 +39,19 @@ i3status:
   dependencies:
     - "i3status"
 
+ranger:
+  link: "~/.config/ranger"
+  dependencies:
+    - "ranger"
+    - "imagemagick"
+    - "w3m"
+    - "feh"
+
 system:
   link: "~"
+  dependencies:
+  - "rxvt-unicode"
+  - "xrdb"
 
 # Install `system.devel` component
 # sudo eopkg install -c system.devel

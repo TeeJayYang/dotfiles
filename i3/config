@@ -30,7 +30,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec gnome-terminal --working-directory="`xcwd`" 
+bindsym $mod+Return exec urxvt -cd "`xcwd`"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -41,8 +41,8 @@ bindsym $mod+Shift+q kill
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 bindsym $mod+semicolon exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu -i'
-bindsym $mod+apostrophe exec "rofi -show ssh -i"
-bindsym $mod+Shift+apostrophe exec "rofi -show run -i" 
+bindsym $mod+Shift+apostrophe exec "rofi -show ssh -i"
+bindsym $mod+apostrophe exec "rofi -show run -i"
 
 # Screenshotting stuff
 bindsym Print exec --no-startup-id rm ~/.tmp/tmp.png -f && scrot ~/.tmp/tmp.png && xclip ~/.tmp/tmp.png -selection clipboard -t image/png && notify-send -u "low" "Took screenshot (window)"
@@ -111,6 +111,8 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
+bindsym $mod+minus workspace 11
+bindsym $mod+plus workspace /
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -123,6 +125,8 @@ bindsym $mod+Shift+7 move container to workspace 7
 bindsym $mod+Shift+8 move container to workspace 8
 bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+minus move container to workspace 11
+bindsym $mod+Shift+plus move container to workspace /
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -185,7 +189,7 @@ exec_always --no-startup-id setup-displays
 exec_always feh --bg-scale ~/.config/i3/wallpaper.png
 exec_always --no-startup-id "xset r rate 200 50"
 exec --no-startup-id redshift
-# exec_always --no-startup-id ~/.config/polybar/launch.sh 
+# exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Color definitions
 set $base03    #002b36
@@ -214,17 +218,17 @@ set $transparent  #00000050
 
 # Window colors
 #                       border     background    text      indicator
-client.focused          $base03    $red         $base2    #00ff00
-client.unfocused        $base03    $base03       $base2    #00ff00
-client.focused_inactive $base03    $base03       $base2    #00ff00
-client.urgent           $base03    $base03       $red      #00ff00
+client.focused          $base03    $red          $base2    $red
+client.unfocused        $base03    $base03       $base2    $base03
+client.focused_inactive $base03    $base03       $base2    $base03
+client.urgent           $base03    $base03       $red      $red
 
 # Window gaps and borders
 hide_edge_borders both
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [title="Preferences$"] floating enable
-for_window [class="^.*"]    border pixel 2 
+for_window [class="^.*"]    border pixel 2
 smart_gaps on
 gaps inner 10
 gaps outer 2
@@ -237,7 +241,7 @@ bar {
   position top
   font pango: 15
   colors {
-      background $transparent 
+      background $transparent
 
       focused_workspace #3685e2 #3685e2 #fafafa
       active_workspace #5294e2 #5294e2 #fafafa

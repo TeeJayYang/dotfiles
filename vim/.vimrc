@@ -70,6 +70,10 @@ map q: :q
 " reloading .vimrc
 noremap <leader>rr :source ~/.vimrc<CR>
 
+" copy and pasting from system clipbard
+noremap <leader>p "+p
+noremap <leader>y "+y
+
 let g:Tex_leader="\<Space>"
 
 " collapsing with space
@@ -207,7 +211,7 @@ set statusline+=%#LineNr#
 set statusline+=\ %f
 set statusline+=%m\
 set statusline+=%=
-set statusline+=%#CursorColumn#
+set statusline+=%#Black#
 set statusline+=\ %y
 set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
 set statusline+=\[%{&fileformat}\]

@@ -20,6 +20,7 @@ function ranger-cd {
     fi
     rm -f -- "$tempfile"
 }
+alias r='ranger-cd'
 alias ranger='ranger-cd'
 
 export VISUAL=vim
