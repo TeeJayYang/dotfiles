@@ -17,48 +17,26 @@ URxvt*urgentOnBell:             true
 URxvt*scrollstyle:              plain
 URxvt.keysym.Shift-Control-V:   eval:paste_clipboard
 URxvt.keysym.Shift-Control-C:   eval:selection_to_clipboard
-URxvt*iso14755:                False
-URxvt*iso14755_52:             False
+URxvt*iso14755:                 False
+URxvt*iso14755_52:              False
 /* URxvt*fading:                   15 */
 
-/* #define firark0 #282a36 */
-#define firark0 #29333d
-#define firark1 #343746
-#define firark2 #3e4154
-#define firark3 #4a4e64
-#define firark4 #e9e9e9
-#define firark5 #efefef
-#define firark6 #f9f9f9
-#define firark7 #92b3ea
-#define firark8 #a796de
-#define firark9 #79a2e7
-#define firark10 #9b88d9
-#define firark11 #ff8e91
-#define firark12 #ffac8d
-#define firark13 #ffcb8d
-#define firark14 #97d28b
-#define firark15 #ff8faa
-
-URxvt*.foreground:   firark4
-URxvt*.background:   [80]firark0
-URxvt*.cursorColor:  firark4
-URxvt*.cursorColor2:  firark0
-URxvt*.colorBD:  firark4
-URxvt*.colorUL:  firark4
-
-*.color0: firark1
-*.color1: firark11
-*.color2: firark7
-*.color3: firark10
-*.color4: firark7
-*.color5: firark8
-*.color6: firark4
-*.color7: firark12
-*.color8: firark3
-*.color9: firark11
-*.color10: firark7
-*.color11: firark13
-*.color12: firark7
-*.color13: firark8
-*.color14: firark14
-*.color15: firark15
+! Dracula Color Scheme
+*.foreground: #F8F8F2
+*.background: #282A36
+*.color0:     #000000
+*.color8:     #4D4D4D
+*.color1:     #FF5555
+*.color9:     #FF6E67
+*.color2:     #50FA7B
+*.color10:    #5AF78E
+*.color3:     #F1FA8C
+*.color11:    #F4F99D
+*.color4:     #BD93F9
+*.color12:    #CAA9FA
+*.color5:     #FF79C6
+*.color13:    #FF92D0
+*.color6:     #8BE9FD
+*.color14:    #9AEDFE
+*.color7:     #BFBFBF
+*.color15:    #E6E6E6
