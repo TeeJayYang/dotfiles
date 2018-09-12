@@ -3,6 +3,8 @@ set number          "set linenumbers
 set wrap            " word wrap
 set linebreak       " only wrap at breaking characters
 set nolist          " list disables linebreak
+set showcmd         " show commands while they are being typed
+set ignorecase      " case insensitive searching
 
 set mouse=a         " allow proper scrolling with mouse wheel
 set hlsearch        " hightlight search terms
@@ -36,7 +38,7 @@ nnoremap k gk
 xnoremap j gj
 xnoremap k gk
 
-" vim window navigation 
+" vim window navigation
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
@@ -73,6 +75,8 @@ noremap <leader>rr :source ~/.vimrc<CR>
 " copy and pasting from system clipbard
 noremap <leader>p "+p
 noremap <leader>y "+y
+
+noremap <leader>ss :%s/\(\ \+$\)//g<CR><C-o>
 
 let g:Tex_leader="\<Space>"
 
@@ -118,9 +122,6 @@ Plug 'tpope/vim-repeat'
 " text surrounding
 Plug 'tpope/vim-surround'
 
-" backet mappings
-" Plug 'tpope/vim-unimpaired'
-
 " unix commands in vim
 Plug 'tpope/vim-eunuch'
 
@@ -133,12 +134,15 @@ Plug 'raimondi/delimitMate'
 " markdown previewing
 Plug 'iamcco/markdown-preview.vim'
 
+" LaTeX things
 Plug 'lervag/vimtex'
 
 " markdown pandoc
 Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'vim-pandoc/vim-pandoc'
 
+" tags
+Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
 " ===========================Plugins
 
@@ -174,6 +178,12 @@ let g:pandoc#syntax#conceal#cchar_overrides = {"atx":"#"}
 let g:pandoc#syntax#style#use_definition_lists = 0
 let g:pandoc#modules#disabled = ["folding"]
 noremap <leader>- :Pandoc pdf<CR>
+
+" config for Guentags
+" let g:gutentags_cache_dir = '~/.tags'
+let g:gutentags_generate_on_empty_buffer = 1
+let g:gutentags_define_advanced_commands = 1
+let g:gutentags_file_list_command = 'find . \( -name \*.h -o -name \*.cpp \)'
 " ====================Plugin Configs
 
 
@@ -217,5 +227,5 @@ set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
 set statusline+=\[%{&fileformat}\]
 set statusline+=\ %p%%
 set statusline+=\ %l:%c
-set statusline+=\ 
+set statusline+=\
 " ========================statusline

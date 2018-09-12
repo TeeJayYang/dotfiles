@@ -68,3 +68,5 @@ npm-debug.log
 .ackrc
 .ignore
 
+# ctags
+tags

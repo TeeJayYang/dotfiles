@@ -1,5 +1,8 @@
 #!/bin/sh
-if (xrandr | grep -q "\bDP-2-1 connected\b") && (xrandr | grep -q "\bDP-2-2 connected\b") ; then
+if (xrandr | grep -q "\bDP-1 connected\b") && (xrandr | grep -q "\bDP-2 connected\b") ; then
+  xrandr --output DP-1 --auto
+  xrandr --output DP-2 --auto --left-of DP-1
+elif (xrandr | grep -q "\bDP-2-1 connected\b") && (xrandr | grep -q "\bDP-2-2 connected\b") ; then
   xrandr --output DP-2-2 --auto --left-of eDP-1
   xrandr --output DP-2-1 --auto --left-of DP-2-2
   xrandr --output eDP-1 --off
