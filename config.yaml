@@ -65,3 +65,6 @@ vim:
     - "vim"
     - "python-pip"
     - "python3-pip"
+  postlink:
+    - "mkdir -p ~/.vim/undodir"
+    - "mkdir -p ~/.vim/backup"
