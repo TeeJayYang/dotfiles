@@ -187,6 +187,9 @@ noremap <leader>- :Pandoc pdf<CR>
 let g:gutentags_generate_on_empty_buffer = 1
 let g:gutentags_define_advanced_commands = 1
 let g:gutentags_file_list_command = 'find . \( -name \*.h -o -name \*.cpp \)'
+
+" config for vim-commentary
+au FileType cpp setl cms=//\ %s
 " ====================Plugin Configs
 
 

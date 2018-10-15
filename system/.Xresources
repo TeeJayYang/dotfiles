@@ -27,6 +27,10 @@ URxvt*scrollTtyOutput:          false
 URxvt*scrollWithBuffer:         true
 URxvt*scrollTtyKeypress:        true
 
+URxvt*transparent: false
+URxvt*shading: 120
+URxvt*tintColor: #282A36
+
 ! Dracula Color Scheme
 *.foreground: #F8F8F2
 *.background: #282A36
