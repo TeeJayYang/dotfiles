@@ -57,6 +57,21 @@ xnoremap u ugv
 xnoremap U ugv
 xnoremap ~ ~gv
 
+" Grep for word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+" use ag for vim grep
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
 " Ctrl Backspace to delete words
 noremap! <C-BS> <C-w>
 noremap! <C-h> <C-w>
@@ -144,7 +159,11 @@ Plug 'vim-pandoc/vim-pandoc'
 
 " tags
 Plug 'ludovicchabant/vim-gutentags'
+
+" fzf
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 call plug#end()
+
 " ===========================Plugins
 
 " Plugin Configs====================
@@ -184,10 +203,44 @@ noremap <leader>- :Pandoc pdf<CR>
 " let g:gutentags_cache_dir = '~/.tags'
 let g:gutentags_generate_on_empty_buffer = 1
 let g:gutentags_define_advanced_commands = 1
-let g:gutentags_file_list_command = 'find . \( -name \*.h -o -name \*.cpp \)'
+let g:gutentags_file_list_command = 'find . \( -name \*.h -o -name \*.cpp -o -name \*.c \)'
 
 " config for vim-commentary
 au FileType cpp setl cms=//\ %s
+au FileType c setl cms=//\ %s
+
+"" Config for Fzf
+function! s:tags_sink(lines) abort
+  if empty(a:lines)
+    return
+  endif
+  let l:cmd = get({
+        \ 'ctrl-t': 'tabedit',
+        \ 'ctrl-x': 'split',
+        \ 'ctrl-v': 'vsplit',
+        \ }, remove(a:lines, 0), 'e')
+  let l:query = a:lines[0]
+  let l:parts = split(l:query, '\t\zs')
+  let l:excmd = matchstr(l:parts[2:], '^.*\ze;"\t')
+  execute 'silent ' l:cmd l:parts[1][:-2]
+  let [l:magic, &magic] = [&magic, 0]
+  execute l:excmd
+  let &magic = l:magic
+endfunction
+
+command! Tags call fzf#run(fzf#wrap({
+      \ 'source':  'cat '.join(map(tagfiles(), 'fnamemodify(v:val, ":S")')).
+      \            '| grep -v -a ^!',
+      \ 'options': '+m -d "\t" --with-nth 1,4.. -n 1 --tiebreak=index --expect=ctrl-x,ctrl-v',
+      \ 'down': '40%',
+      \ 'sink*':    function('s:tags_sink'),
+      \ }))
+command! Buffers call fzf#run(fzf#wrap({
+      \ 'source': filter(map(range(1, bufnr('$')), 'bufname(v:val)'), 'len(v:val)'),
+      \ }))
+command! MRU call fzf#run(fzf#wrap({
+      \ 'source': v:oldfiles,
+      \ }))
 " ====================Plugin Configs
 
 
@@ -237,3 +290,12 @@ set statusline+=\
 " highlight if over the 90 char limit
 highlight ColorColumn ctermbg=magenta
 call matchadd('ColorColumn', '\%91v', 100)
+
+" Fzf keybindings
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>f :FZF<CR>
+nnoremap <leader>m :MRU<CR>
+nnoremap <leader>t :Tags<CR>
+
+" Write with sudo
+cmap w!! w !sudo tee > /dev/null %

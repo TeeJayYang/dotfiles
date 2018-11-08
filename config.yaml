@@ -63,8 +63,19 @@ vim:
     - ".*": "~"
   dependencies:
     - "vim"
+    - "curl"
+    - "ctags"
+    - "pandoc"
     - "python-pip"
     - "python3-pip"
+    - "ag"
   postlink:
     - "mkdir -p ~/.vim/undodir"
     - "mkdir -p ~/.vim/backup"
+
+zathura:
+    link:
+    - zathurarc: "~/.config/zathura"
+    dependencies:
+    - "zathura"
+    - "texlive-all"
