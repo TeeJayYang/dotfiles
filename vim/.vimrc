@@ -54,8 +54,12 @@ xnoremap < <gv
 
 " switching case in visual mode stays in visual mode
 xnoremap u ugv
-xnoremap U ugv
+xnoremap U Ugv
 xnoremap ~ ~gv
+
+" inc/decrementing numbers in visual mode statys in visual mode
+xnoremap <C-a> <C-a>gv
+xnoremap <C-x> <C-x>gv
 
 " Grep for word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
@@ -83,6 +87,9 @@ set backspace=indent,eol,start
 " Remapping the command line window because
 " I'm a terrible typist
 map q: :q
+
+" yanking moves cursor to end of yanked text
+vmap y ygv<Esc>
 
 " leader stuff
 " reloading .vimrc
@@ -245,6 +252,7 @@ command! MRU call fzf#run(fzf#wrap({
 
 
 " statusline========================
+highlight statusLineNC ctermfg=8 ctermbg=2
 highlight statusLineDark ctermfg=12 ctermbg=0
 highlight statusLineLight ctermfg=15 ctermbg=10
 highlight statusLineAccent ctermfg=15 ctermbg=160

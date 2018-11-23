@@ -12,5 +12,5 @@ set incremental-search true
 set statusbar-home-tilde true
 
 # zoom
-map <C-i> zoom in
-map <C-o> zoom out
+map = zoom in
+map - zoom out
