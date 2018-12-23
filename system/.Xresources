@@ -2,7 +2,7 @@ Xft.dpi:                        96
 Xft.antialias:                  true
 
 URxvt*termName:                 xterm-256color
-URxvt*font:                     xft:Monospace:pixelsize=14:antialias=true
+URxvt*font:                     xft:Hack:style=Regular:pixelsize=14:antialias=true
 URxvt*depth:                    32
 /* URxvt*lineSpace:                1 */
 /* URxvt*letterSpace:              -0.5 */

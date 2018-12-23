@@ -19,8 +19,8 @@ general {
 #order += "run_watch VPN"
 order += "wireless _first_"
 order += "ethernet _first_"
-order += "volume master"
-order += "battery 0"
+# order += "volume master"
+order += "battery all"
 order += "tztime local"
 
 wireless _first_ {
@@ -31,7 +31,7 @@ wireless _first_ {
 ethernet _first_ {
         # if you use %speed, i3status requires root privileges
         format_up = "E: %ip (%speed)"
-        format_down = "E: down"
+        format_down = ""
 }
 
 volume master{
@@ -52,6 +52,25 @@ battery 0 {
         status_chr = "⚡"
         status_bat = "🔋"
         status_full = "☻ FULL"
+}
+
+battery all {
+        # format = "%status %percentage %remaining %emptytime"
+        format = " %status %percentage"
+        format_down = "No battery"
+        last_full_capacity = true
+        integer_battery_capacity = true
+        # status_chr = ""
+        status_chr = "⚡"
+        # status_bat = "bat"
+        # status_bat = "☉"
+        status_bat = ""
+        # status_unk = "?"
+        status_unk = ""
+        # status_full = ""
+        status_full = "☻"
+        low_threshold = 15
+        threshold_type = time
 }
 
 run_watch DHCP {
