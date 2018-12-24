@@ -22,13 +22,16 @@ i3:
     - "i3lock"
     - "rofi"
     - "imagemagick"
-    - "xbacklight"
+    - "xorg-xbacklight"
     - "xclip"
     - "redshift"
     - "ranger"
     - "feh"
     - "network-manager"
     - "scrot"
+    - "upower"
+    - "python-dbus"
+    - "light"
   postlink:
     - "mkdir -p ~/.tmp"
 
