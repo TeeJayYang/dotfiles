@@ -9,11 +9,11 @@ set background=dark " force dark background on terminal transparency
 
 set mouse=a         " allow proper scrolling with mouse wheel
 set hlsearch        " hightlight search terms
-set tabstop=4       " The width of a TAB is set to 4.
+set tabstop=2       " The width of a TAB
 
-set shiftwidth=4    " Indents will have a width of 4
+set shiftwidth=2    " Indent width
 
-set softtabstop=4  " Sets the number of columns for a TAB
+set softtabstop=2  " Sets the number of columns for a TAB
 
 set expandtab       " Expand TABs to spaces
 set autoindent

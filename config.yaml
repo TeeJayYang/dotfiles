@@ -42,6 +42,13 @@ i3status:
   dependencies:
     - "i3status"
 
+mpv:
+  link: "~/.config/mpv"
+  postlink:
+    - "mkdir -p ~/Pictures/Screenshots"
+  dependencies:
+    - "mpv"
+
 ranger:
   link: "~/.config/ranger"
   dependencies:
@@ -70,8 +77,6 @@ vim:
     - "ctags"
     - "pandoc"
     - "python-pip"
-    - "python3-pip"
-    - "ag"
   postlink:
     - "mkdir -p ~/.vim/undodir"
     - "mkdir -p ~/.vim/backup"
@@ -81,4 +86,4 @@ zathura:
     - zathurarc: "~/.config/zathura"
     dependencies:
     - "zathura"
-    - "texlive-all"
+    # - "texlive-most"
