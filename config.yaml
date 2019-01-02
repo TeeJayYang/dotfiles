@@ -27,7 +27,6 @@ i3:
     - "redshift"
     - "ranger"
     - "feh"
-    - "network-manager"
     - "scrot"
     - "upower"
     - "python-dbus"
@@ -49,6 +48,10 @@ mpv:
   dependencies:
     - "mpv"
 
+other:
+  link: "~"
+  dependencies:
+    - "qbittorrent"
 ranger:
   link: "~/.config/ranger"
   dependencies:
@@ -63,8 +66,6 @@ system:
   - "rxvt-unicode"
   - "xrdb"
 
-# Install `system.devel` component
-# sudo eopkg install -c system.devel
 vim:
   link:
     - minisnip: "~/.vim"
@@ -86,4 +87,5 @@ zathura:
     - zathurarc: "~/.config/zathura"
     dependencies:
     - "zathura"
-    # - "texlive-most"
+    - "zathura-pdf-mupdf"
+    - "texlive-most"
