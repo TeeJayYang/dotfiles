@@ -15,7 +15,7 @@ set shiftwidth=2    " Indent width
 
 set softtabstop=2  " Sets the number of columns for a TAB
 
-set expandtab       " Expand TABs to spaces
+set expandtab       " Expand TABs to spaces 
 set autoindent
 set undofile        " Persistent undo
 set undodir=~/.vim/undodir
@@ -99,7 +99,7 @@ noremap <leader>rr :source ~/.vimrc<CR>
 noremap <leader>p "+p
 noremap <leader>y "+y
 
-noremap <leader>ss :%s/\(\ \+$\)//g<CR><C-o>
+noremap <leader>ss :%s/\(\ \+$\)//g<CR><C-o>:noh<CR>
 
 let g:Tex_leader="\<Space>"
 
@@ -200,7 +200,7 @@ let g:vim_markdown_math = 1
 " Pandoc vim
 " let g:pandoc#command#autoexec_on_writes = 1
 " let g:pandoc#command#autoexec_command = "Pandoc pdf"
-let g:pandoc#syntax#conceal#blacklist = ["codeblock_start","codeblock_delim","inlinecode", "quotes","list"]
+let g:pandoc#syntax#conceal#blacklist = ["codeblock_start","codeblock_delim","inlinecode", "quotes","list", "ellipses"]
 let g:pandoc#syntax#conceal#cchar_overrides = {"atx":"#"}
 let g:pandoc#syntax#style#use_definition_lists = 0
 let g:pandoc#modules#disabled = ["folding"]
@@ -296,8 +296,8 @@ set statusline+=\
 " ========================statusline
 
 " highlight if over the 90 char limit
-highlight ColorColumn ctermbg=magenta
-call matchadd('ColorColumn', '\%91v', 100)
+" highlight ColorColumn ctermbg=magenta
+" call matchadd('ColorColumn', '\%91v', 100)
 
 " Fzf keybindings
 nnoremap <leader>b :Buffers<CR>
