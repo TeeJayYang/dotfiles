@@ -70,3 +70,8 @@ npm-debug.log
 
 # ctags
 tags
+
+# LaTeX compiler files
+*.aux
+*.fdb_latexmk
+*.fls

@@ -154,9 +154,6 @@ Plug 'yggdroot/indentline'
 " Auto brackets
 Plug 'raimondi/delimitMate'
 
-" markdown previewing
-Plug 'iamcco/markdown-preview.vim'
-
 " LaTeX things
 Plug 'lervag/vimtex'
 
@@ -169,6 +166,15 @@ Plug 'ludovicchabant/vim-gutentags'
 
 " fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+
+" ============= Document Writing ============
+"
+" markdown previewing
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
+
+" markdown qol
+Plug 'reedes/vim-pencil'
+
 call plug#end()
 
 " ===========================Plugins
@@ -193,13 +199,27 @@ let g:vimtex_compiler_latexmk = {'callback' : 0}
 let g:vimtex_view_method = 'zathura'
 let g:tex_conceal = ''
 
-" config for vim-markdown
-let g:tex_conceal = ""
-let g:vim_markdown_math = 1
+" config for vim-pencil
+let g:pencil#textwidth = 150
+map <F11> :PencilToggle <CR>
+
+" config for markdown-preview
+let g:mkdp_preview_options = {
+    \ 'mkit': {},
+    \ 'katex': {},
+    \ 'uml': {},
+    \ 'maid': {},
+    \ 'disable_sync_scroll': 0,
+    \ 'sync_scroll_type': 'relative'
+    \ }
 
 " Pandoc vim
 " let g:pandoc#command#autoexec_on_writes = 1
 " let g:pandoc#command#autoexec_command = "Pandoc pdf"
+"
+" let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
+" let g:pandoc#filetypes#pandoc_markdown = 0
+
 let g:pandoc#syntax#conceal#blacklist = ["codeblock_start","codeblock_delim","inlinecode", "quotes","list", "ellipses"]
 let g:pandoc#syntax#conceal#cchar_overrides = {"atx":"#"}
 let g:pandoc#syntax#style#use_definition_lists = 0
@@ -210,7 +230,7 @@ noremap <leader>- :Pandoc pdf<CR>
 " let g:gutentags_cache_dir = '~/.tags'
 let g:gutentags_generate_on_empty_buffer = 1
 let g:gutentags_define_advanced_commands = 1
-let g:gutentags_file_list_command = 'find . \( -name \*.h -o -name \*.cpp -o -name \*.c \)'
+let g:gutentags_file_list_command = 'find . \( -name \*.h -o -name \*.cpp -o -name \*.c \ -o -name \*.java)'
 
 " config for vim-commentary
 au FileType cpp setl cms=//\ %s

@@ -206,7 +206,7 @@ bindsym XF86AudioPrev exec mpc prev
 exec_always --no-startup-id setup-touchpad
 
 ########## Styling shit and autostartup #################
-exec_always --no-startup-id compton -f --config ~/.config/compton/compton.conf
+exec_always --no-startup-id compton --config ~/.config/compton/compton.conf
 exec --no-startup-id dunst -c ~/.config/dunst/dunstrc
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id setup-displays

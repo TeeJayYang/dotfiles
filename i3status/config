@@ -19,7 +19,7 @@ general {
 #order += "run_watch VPN"
 order += "wireless _first_"
 order += "ethernet _first_"
-# order += "volume master"
+order += "volume master"
 order += "battery all"
 order += "tztime local"
 
@@ -81,7 +81,8 @@ run_watch VPN {
         pidfile = "/var/run/vpnc/pid"
 }
 
-tztime local {
+tztime local{
 	format = "%a %b %_d %Y %l:%M %p"
 	#format = "%d.%m.%Y %l:%M"	
+  timezone = "Universal"
 }

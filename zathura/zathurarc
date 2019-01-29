@@ -14,3 +14,6 @@ set statusbar-home-tilde true
 # zoom
 map = zoom in
 map - zoom out
+
+map <Space> navigate next
+map <S-Space> navigate previous
