@@ -230,7 +230,7 @@ noremap <leader>- :Pandoc pdf<CR>
 " let g:gutentags_cache_dir = '~/.tags'
 let g:gutentags_generate_on_empty_buffer = 1
 let g:gutentags_define_advanced_commands = 1
-let g:gutentags_file_list_command = 'find . \( -name \*.h -o -name \*.cpp -o -name \*.c \ -o -name \*.java)'
+let g:gutentags_file_list_command = 'find . \( -name \*.h -o -name \*.cpp -o -name \*.c -o -name \*.java \)'
 
 " config for vim-commentary
 au FileType cpp setl cms=//\ %s
@@ -327,3 +327,9 @@ nnoremap <leader>t :Tags<CR>
 
 " Write with sudo
 cmap w!! w !sudo tee > /dev/null %
+
+" Jump to last edited position when reopening a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g'\"" | endif
+endif

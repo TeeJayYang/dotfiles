@@ -84,5 +84,5 @@ run_watch VPN {
 tztime local{
 	format = "%a %b %_d %Y %l:%M %p"
 	#format = "%d.%m.%Y %l:%M"	
-  timezone = "Universal"
+  timezone = "EST"
 }

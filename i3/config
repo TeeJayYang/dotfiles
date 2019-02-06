@@ -212,7 +212,7 @@ exec_always --no-startup-id nm-applet
 exec_always --no-startup-id setup-displays
 exec_always feh --bg-scale ~/.config/i3/wallpaper.png
 exec_always --no-startup-id "xset r rate 200 50"
-exec --no-startup-id redshift
+exec --no-startup-id redshift-gtk
 # exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Color definitions
