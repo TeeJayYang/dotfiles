@@ -52,6 +52,8 @@ other:
   link: "~"
   dependencies:
     - "qbittorrent"
+    - "tlp"
+
 ranger:
   link: "~/.config/ranger"
   dependencies:
@@ -59,6 +61,12 @@ ranger:
     - "imagemagick"
     - "w3m"
     - "feh"
+
+redshift:
+  link: "~/.config/"
+  dependencies:
+    - "redshift"
+
 
 system:
   link: "~"
