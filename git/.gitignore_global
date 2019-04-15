@@ -75,3 +75,7 @@ tags
 *.aux
 *.fdb_latexmk
 *.fls
+*.toc
+
+# idea
+.idea

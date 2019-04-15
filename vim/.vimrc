@@ -17,12 +17,21 @@ set softtabstop=2  " Sets the number of columns for a TAB
 
 set expandtab       " Expand TABs to spaces 
 set autoindent
-set undofile        " Persistent undo
-set undodir=~/.vim/undodir
 
+set undofile        " Persistent undo
+set undodir=~/.vim/undo//
 set backup
-set backupdir=~/.vim/backup,.
-set directory=~/.vim/backup,.
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swp//
+"
+" Create necessary directories
+if exists('*mkdir')
+  for s:dir in [ '/.vim/backup', '/.vim/swp', '/.vim/undo', '/.vim/tags', '/.vim/viminfo' ]
+    if !isdirectory($HOME.s:dir)
+      call mkdir($HOME.s:dir, 'p')
+    endif
+  endfor
+endif
 
 map <Space> <Nop>
 let g:mapleader="\<Space>"
@@ -38,6 +47,10 @@ nnoremap j gj
 nnoremap k gk
 xnoremap j gj
 xnoremap k gk
+nnoremap H ^
+nnoremap L $
+xnoremap H ^
+xnoremap L $
 
 " vim window navigation
 nnoremap <C-J> <C-W><C-J>
@@ -122,7 +135,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   augroup END
 endif
 call plug#begin('~/.vim/bundle')
-" color scheme
 " dynamic colorscheme
 " Plug 'dylanaraps/wal.vim'
 " colorscheme wal
@@ -174,6 +186,9 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 
 " markdown qol
 Plug 'reedes/vim-pencil'
+
+" better syntax
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
@@ -268,6 +283,9 @@ command! Buffers call fzf#run(fzf#wrap({
 command! MRU call fzf#run(fzf#wrap({
       \ 'source': v:oldfiles,
       \ }))
+
+"" Config for Polyglot
+let g:polyglot_disabled = ['latex']
 " ====================Plugin Configs
 
 
