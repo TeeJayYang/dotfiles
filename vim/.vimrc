@@ -6,6 +6,8 @@ set nolist          " list disables linebreak
 set showcmd         " show commands while they are being typed
 set ignorecase      " case insensitive searching
 set background=dark " force dark background on terminal transparency
+hi clear SpellBad
+hi SpellBad cterm=underline ctermfg=red
 
 set mouse=a         " allow proper scrolling with mouse wheel
 set hlsearch        " hightlight search terms
