@@ -6,11 +6,12 @@ URxvt*font:                     xft:Hack:style=Regular:pixelsize=16:antialias=tr
 URxvt*depth:                    32
 /* URxvt*lineSpace:                1 */
 /* URxvt*letterSpace:              -0.5 */
-URxvt*scrollBar:                true
+/* URxvt*scrollBar:                true */
+URxvt*scrollBar:                false
 URxvt*scrollBar_right:          false
 URxvt*scrollcolor:              #ffffff
 URxvt*thickness:                5
-URxvt*internalBorder:           28
+URxvt*internalBorder:           15
 URxvt*buffered:                 true
 URxvt*saveLines:                30000
 URxvt*hold:                     false
