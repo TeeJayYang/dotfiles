@@ -263,7 +263,7 @@ bar {
   i3bar_command i3bar -t
   status_command i3status
   position top
-  font pango: 15
+  font pango:Hack-Regular 15
   colors {
       background $transparent
 
