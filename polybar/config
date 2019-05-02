@@ -40,9 +40,9 @@ font-2 = Font Awesome 5 Free:style=Solid:pixelsize=14;1
 type = internal/date
 date = "%a %b %d %Y"
 
-time = %H:%M %p
+time = %l:%M %p
 
-label = %date% %time%
+label = %date%%time%
 
 [module/i3]
 type = internal/i3
