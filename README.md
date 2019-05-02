@@ -4,7 +4,7 @@ Configs for Linux
 # Software
 ```
 distro          ->  solus
-de/wm           ->  i3-gaps w/ i3bar
+de/wm           ->  i3-gaps w/ polybar
 editor          ->  vim
 file explorer   ->  ranger
 image viewer    ->  sxiv

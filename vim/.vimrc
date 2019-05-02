@@ -192,6 +192,9 @@ Plug 'reedes/vim-pencil'
 " better syntax
 Plug 'sheerun/vim-polyglot'
 
+" color preview
+Plug 'chrisbra/Colorizer'
+
 call plug#end()
 
 " ===========================Plugins
@@ -288,6 +291,10 @@ command! MRU call fzf#run(fzf#wrap({
 
 "" Config for Polyglot
 let g:polyglot_disabled = ['latex']
+
+" Color
+let g:colorizer_syntax = 1
+let g:colorizer_auto_filetype='css,html,conf,dosini,xdefaults'
 " ====================Plugin Configs
 
 
