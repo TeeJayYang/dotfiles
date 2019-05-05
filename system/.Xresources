@@ -55,4 +55,4 @@ URxvt*tintColor: #483D8B
 *color7:      #BFBFBF
 *color15:     #E6E6E6
 
-URxvt*background: [80]#282A36
+URxvt*background: #282A36

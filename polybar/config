@@ -1,7 +1,8 @@
+; vim:ft=dosini
+
 [colors]
-; background = ${xrdb:background:#222}
+background = ${xrdb:background:#222}
 ; background = #CC282A36
-background = #00282A36
 background-alt = #444
 foreground = ${xrdb:foreground:#222}
 ; foreground = #eedbb2
@@ -23,6 +24,8 @@ modules-right = eth wlan pulseaudio battery date
 module-margin-left = 1
 module-margin-right = 1
 
+padding-right = 1
+
 separator = |
 
 tray-position = right
@@ -38,11 +41,11 @@ font-2 = Font Awesome 5 Free:style=Solid:pixelsize=14;1
 
 [module/date]
 type = internal/date
-date = "%a %b %d %Y"
+date = %a %b %d %Y
 
-time = %l:%M %p
+time = %I:%M %p
 
-label = %date%%time%
+label = %date% %time%
 
 [module/i3]
 type = internal/i3
@@ -110,7 +113,7 @@ animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
 animation-charging-foreground = ${colors.foreground}
-animation-charging-framerate = 1000 
+animation-charging-framerate = 500
 
 [module/pulseaudio]
 type = internal/pulseaudio
