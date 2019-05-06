@@ -1,3 +1,5 @@
+; vim:ft=dosini
+
 [global]
         markup = yes
         format = "<b>%s</b>\n%b"
@@ -18,10 +20,14 @@
         separator_height = 2
         padding = 8
         horizontal_padding = 8
-        separator_color = "#b58900"
+        frame_width = 1
+        frame_color = "#BD93F9"
+        separator_color = frame
         startup_notification = false
-        color = "#002b36"
+        color = "#282A36"
         width = 1
+        icon_position = left
+        max_icon_size = 64
 
 [shortcuts]
         close = ctrl+space
@@ -30,16 +36,16 @@
         context = ctrl+shift+period
 
 [urgency_low]
-        background = "#073642"
-        foreground = "#b58900"
+        background = "#282A36"
+        foreground = "#F8F8F2"
         timeout = 5
 
 [urgency_normal]
-        background = "#073642"
-        foreground = "#fdf6e3"
+        background = "#282A36"
+        foreground = "#E6E6E6"
         timeout = 20
 
 [urgency_critical]
-        background = "#073642"
-        foreground = "#dc322f"
+        background = "#282A36"
+        foreground = "#FF6E67"
         timeout = 0
