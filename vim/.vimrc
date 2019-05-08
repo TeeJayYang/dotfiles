@@ -247,7 +247,7 @@ let g:pandoc#modules#disabled = ["folding"]
 noremap <leader>- :Pandoc pdf<CR>
 
 " config for Guentags
-" let g:gutentags_cache_dir = '~/.tags'
+let g:gutentags_cache_dir = '~/.tags'
 let g:gutentags_generate_on_empty_buffer = 1
 let g:gutentags_define_advanced_commands = 1
 let g:gutentags_file_list_command = 'find . \( -name \*.h -o -name \*.cpp -o -name \*.c -o -name \*.java \)'
