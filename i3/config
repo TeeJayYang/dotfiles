@@ -232,20 +232,22 @@ set $violet    #6c71c4
 set $blue      #268bd2
 set $cyan      #2aa198
 set $green     #859900
+set $color4    #BD93F9
 
 set $active-bar-bg-color     #fdf6e3
 set $inactive-bar-bg-color   #93a1a1
 set $active-bar-text-color   #002b36
 set $inactive-bar-text-color #002b36
+
 #                  RRGGBBAA
 set $transparent  #00000050
 
 # Window colors
 #                       border     background    text      indicator
-client.focused          $base03    $red          $base2    $red
+client.focused          $base03    $color4       $base2    $color4
 client.unfocused        $base03    $base03       $base2    $base03
 client.focused_inactive $base03    $base03       $base2    $base03
-client.urgent           $base03    $base03       $red      $red
+client.urgent           $base03    $base03       $color4   $color4
 
 # Window gaps and borders
 hide_edge_borders both
