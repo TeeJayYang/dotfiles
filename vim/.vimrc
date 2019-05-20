@@ -207,7 +207,7 @@ let g:indentLine_fileTypeExclude = ['markdown', 'json']
 
 " config for delimitmate
 let g:delimitMate_autoclose = 1
-let g:delimitMate_expand_space = 1
+let g:delimitMate_expand_space = 0
 let g:delimitMate_expand_cr = 1
 let g:delimitMate_matchpairs = '(:),[:],{:}'
 au FileType pandoc let b:delimitMate_quotes = "\" '"
