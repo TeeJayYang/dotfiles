@@ -12,6 +12,7 @@ secondary = #e60053
 alert = ${xrdb:color1:#F00}
 
 [bar/top]
+monitor = ${env:MONITOR:}
 bottom = false
 height = 3%
 ; radius = 10
@@ -52,6 +53,7 @@ type = internal/i3
 format = <label-state> <label-mode>
 index-sort = true
 wrapping-scroll = false
+pin-workspaces = true
 
 ; Only show workspaces on the same output as the bar
 ;pin-workspaces = true

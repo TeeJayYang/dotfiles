@@ -1,6 +1,6 @@
 export PATH="$HOME/bin:$HOME/.bin:$HOME/.local:$HOME/.local/bin/:$PATH"
 export TERMINAL="urxvt"
-source ~/git-completion.bash
+source ~/.git-completion.bash
 
 alias l='ls -B --color=auto'
 alias ls='ls --color=auto'
