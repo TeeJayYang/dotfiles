@@ -10,6 +10,8 @@ hi clear SpellBad
 hi SpellBad cterm=underline ctermfg=1
 hi clear SpellCap
 hi SpellCap cterm=underline ctermfg=4
+hi IncSearch ctermfg=5 ctermbg=15 term=underline
+hi link SearchLight IncSearch
 
 set mouse=a         " allow proper scrolling with mouse wheel
 set hlsearch        " hightlight search terms
@@ -181,6 +183,9 @@ Plug 'ludovicchabant/vim-gutentags'
 " fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
+" highlighting for current search
+Plug 'peterrincker/vim-searchlight'
+
 " ============= Document Writing ============
 "
 " markdown previewing
@@ -226,6 +231,16 @@ let g:vimtex_compiler_latexmk = {'callback' : 0}
 " let g:latex_view_general_viewer = 'zathura'
 let g:vimtex_view_method = 'zathura'
 let g:tex_conceal = ''
+let g:vimtex_compiler_latexmk_engines = {
+    \ '_'                : '-pdf',
+    \ 'pdflatex'         : '-pdf',
+    \ 'dvipdfex'         : '-pdfdvi',
+    \ 'lualatex'         : '-lualatex',
+    \ 'xelatex'          : '-pdf -xelatex',
+    \ 'context (pdftex)' : '-pdf -pdflatex=texexec',
+    \ 'context (luatex)' : '-pdf -pdflatex=context',
+    \ 'context (xetex)'  : '-pdf -pdflatex=''texexec --xtx''',
+    \}
 
 " config for vim-pencil
 let g:pencil#textwidth = 150
