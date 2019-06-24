@@ -4,13 +4,13 @@ set wrap            " word wrap
 set linebreak       " only wrap at breaking characters
 set nolist          " list disables linebreak
 set showcmd         " show commands while they are being typed
-set ignorecase      " case insensitive searching
+set smartcase       " smart case searching
 set background=dark " force dark background on terminal transparency
 hi clear SpellBad
 hi SpellBad cterm=underline ctermfg=1
 hi clear SpellCap
 hi SpellCap cterm=underline ctermfg=4
-hi IncSearch ctermfg=5 ctermbg=15 term=underline
+hi IncSearch cterm=underline ctermfg=0 ctermbg=5
 hi link SearchLight IncSearch
 
 set mouse=a         " allow proper scrolling with mouse wheel
@@ -231,16 +231,17 @@ let g:vimtex_compiler_latexmk = {'callback' : 0}
 " let g:latex_view_general_viewer = 'zathura'
 let g:vimtex_view_method = 'zathura'
 let g:tex_conceal = ''
-let g:vimtex_compiler_latexmk_engines = {
-    \ '_'                : '-pdf',
-    \ 'pdflatex'         : '-pdf',
-    \ 'dvipdfex'         : '-pdfdvi',
-    \ 'lualatex'         : '-lualatex',
-    \ 'xelatex'          : '-pdf -xelatex',
-    \ 'context (pdftex)' : '-pdf -pdflatex=texexec',
-    \ 'context (luatex)' : '-pdf -pdflatex=context',
-    \ 'context (xetex)'  : '-pdf -pdflatex=''texexec --xtx''',
+let g:vimtex_compiler_latexmk = {
+    \ 'options' : [
+    \   '-pdf',
+    \   '-verbose',
+    \   '-file-line-error',
+    \   '-synctex=1',
+    \   '-interaction=nonstopmode',
+    \ ],
     \}
+let g:vimtex_quickfix_open_on_warning = 0
+nmap <leader>q :copen<CR>
 
 " config for vim-pencil
 let g:pencil#textwidth = 150
