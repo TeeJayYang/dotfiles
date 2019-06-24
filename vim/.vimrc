@@ -4,6 +4,7 @@ set wrap            " word wrap
 set linebreak       " only wrap at breaking characters
 set nolist          " list disables linebreak
 set showcmd         " show commands while they are being typed
+set ignorecase      " case insensitive searching
 set smartcase       " smart case searching
 set background=dark " force dark background on terminal transparency
 hi clear SpellBad
