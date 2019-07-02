@@ -49,8 +49,6 @@ bindsym $mod+apostrophe exec "rofi -show run -i"
 bindsym Print exec --no-startup-id rm ~/.tmp/tmp.png -f && scrot ~/.tmp/tmp.png && xclip ~/.tmp/tmp.png -selection clipboard -t image/png && notify-send -u "low" "Took screenshot (Desktop)"
 bindsym --release Shift+Print exec --no-startup-id rm ~/.tmp/tmp.png -f && scrot -s ~/.tmp/tmp.png && xclip ~/.tmp/tmp.png -selection clipboard -t image/png && notify-send -u "low" "Took screenshot (area)"
 
-# start rofi
-
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -216,38 +214,32 @@ exec --no-startup-id redshift-gtk
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Color definitions
-set $base03    #002b36
-set $base02    #073642
-set $base01    #586e75
-set $base00    #657b83
-set $base0     #839496
-set $base1     #93a1a1
-set $base2     #eee8d5
-set $base3     #fdf6e3
-set $yellow    #b58900
-set $orange    #cb4b16
-set $red       #dc322f
-set $magenta   #d33682
-set $violet    #6c71c4
-set $blue      #268bd2
-set $cyan      #2aa198
-set $green     #859900
-set $color4    #BD93F9
-
-set $active-bar-bg-color     #fdf6e3
-set $inactive-bar-bg-color   #93a1a1
-set $active-bar-text-color   #002b36
-set $inactive-bar-text-color #002b36
+set $color0       #282C34
+set $color8       #3E4452
+set $color1       #E06C75
+set $color9       #BE5046
+set $color2       #98C379
+set $color10      #98C379
+set $color3       #E5C07B
+set $color11      #D19A66
+set $color4       #61AFEF
+set $color12      #61AFEF
+set $color5       #C678DD
+set $color13      #C678DD
+set $color6       #56B6C2
+set $color14      #56B6C2
+set $color7       #ABB2BF
+set $color15      #5C6370
 
 #                  RRGGBBAA
 set $transparent  #00000050
 
 # Window colors
 #                       border     background    text      indicator
-client.focused          $base03    $color4       $base2    $color4
-client.unfocused        $base03    $base03       $base2    $base03
-client.focused_inactive $base03    $base03       $base2    $base03
-client.urgent           $base03    $base03       $color4   $color4
+client.focused          $color4    $color4      $color0    $color4
+client.unfocused        $color15   $color0      $color7    $color0
+client.focused_inactive $color15   $color0      $color7    $color0
+client.urgent           $color1    $color1      $color0    $color1
 
 # Window gaps and borders
 hide_edge_borders both

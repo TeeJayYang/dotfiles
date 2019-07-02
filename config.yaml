@@ -54,8 +54,14 @@ other:
     - "qbittorrent"
     - "tlp"
 
+rofi:
+  link: "~/.config/rofi"
+  dependencies:
+    - "rofi"
+
 polybar:
   link: "~/.config/polybar"
+  dependencies:
     - "polybar"
 
 ranger:

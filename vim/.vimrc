@@ -129,7 +129,6 @@ nnoremap <leader>a za
 "syntax highlighting
 " for Jenkinsfile
 au BufNewFile,BufRead Jenkinsfile setf groovy
-
 " Plugins===========================
 """ Plugins
 "" Download vim-plug if it does not exist
@@ -145,6 +144,9 @@ call plug#begin('~/.vim/bundle')
 " dynamic colorscheme
 " Plug 'dylanaraps/wal.vim'
 " colorscheme wal
+
+" Regular color scheme
+Plug 'joshdick/onedark.vim'
 
 "" Highlighting for transparent background
 highlight Normal ctermbg=none
@@ -358,10 +360,14 @@ endfunction
 
 let g:crystalline_statusline_fn = 'StatusLine'
 let g:crystalline_tabline_fn = 'TabLine'
-let g:crystalline_theme = 'dracula'
+let g:crystalline_theme = 'onedark'
 
 set showtabline=2
 set laststatus=2
+
+"" Colorscheme config
+let g:onedark_termcolors=16
+colorscheme onedark
 " ====================Plugin Configs
 
 " highlight if over the 90 char limit
