@@ -15,7 +15,8 @@ dmenu           ->  rofi
 ```
 
 # Screenshots
-![](screenshots/2018_07_14.png "Fake Dirty")
+![](screenshots/dirty.png "Fake Dirty")
+![](screenshots/rofi.png "Rofi")
 
 # Installation
 
