@@ -59,7 +59,7 @@ pin-workspaces = true
 ;pin-workspaces = true
 
 label-mode-padding = 2
-label-mode-foreground = ${colors.foreground}
+label-mode-foreground = ${colors.background}
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
