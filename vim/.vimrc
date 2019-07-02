@@ -22,7 +22,7 @@ set shiftwidth=2    " Indent width
 
 set softtabstop=2  " Sets the number of columns for a TAB
 
-set expandtab       " Expand TABs to spaces 
+set expandtab       " Expand TABs to spaces
 set autoindent
 
 set undofile        " Persistent undo
@@ -89,6 +89,11 @@ if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
 
+" Using Ag for global grep
+command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+
+nnoremap ? :Ag<SPACE>
+
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
@@ -104,8 +109,7 @@ inoremap <C-BS> <C-\><C-o>db
 
 set backspace=indent,eol,start
 
-" Remapping the command line window because
-" I'm a terrible typist
+" Remapping the command line window
 map q: :q
 
 " yanking moves cursor to end of yanked text
@@ -129,6 +133,7 @@ nnoremap <leader>a za
 "syntax highlighting
 " for Jenkinsfile
 au BufNewFile,BufRead Jenkinsfile setf groovy
+
 " Plugins===========================
 """ Plugins
 "" Download vim-plug if it does not exist
@@ -275,9 +280,10 @@ noremap <leader>- :Pandoc pdf<CR>
 
 " config for Guentags
 let g:gutentags_cache_dir = '~/.tags'
+" let g:gutentags_trace = 1
 let g:gutentags_generate_on_empty_buffer = 1
 let g:gutentags_define_advanced_commands = 1
-let g:gutentags_file_list_command = 'find . \( -name \*.h -o -name \*.cpp -o -name \*.c -o -name \*.java \)'
+let g:gutentags_ctags_exclude = ["*.min.js", "*.min.css", "build", "vendor", ".git", "node_modules", "*.vim/bundle/*"]
 
 " config for vim-commentary
 au FileType cpp setl cms=//\ %s
@@ -338,8 +344,9 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_set_quickfix = 0
 let g:ale_sign_column_always = 1
 let g:ale_open_list = 0
-nmap <silent> <S-Tab> <Plug>(ale_previous_wrap)
-nmap <silent> <Tab> <Plug>(ale_next_wrap)
+let g:ale_virtualenv_dir_names = ['.env', '.venv', 'env', 've-py3', 've', 'virtualenv', 'venv']
+nmap <silent> <C-p> <Plug>(ale_previous_wrap)
+nmap <silent> <C-n> <Plug>(ale_next_wrap)
 nmap <leader>l :lop<CR>
 
 "" Clear the gutter color
@@ -363,6 +370,7 @@ let g:crystalline_tabline_fn = 'TabLine'
 let g:crystalline_theme = 'onedark'
 
 set showtabline=2
+set guioptions-=e
 set laststatus=2
 
 "" Colorscheme config
@@ -388,3 +396,6 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal! g'\"" | endif
 endif
+
+" Changing formatting option depending on file type
+autocmd FileType python setlocal equalprg=yapf
