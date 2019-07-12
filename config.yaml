@@ -11,6 +11,9 @@ dunst:
   dependencies:
     - "dunst"
 
+fonts:
+  link: "~/.local/share/fonts"
+
 git:
   link: "~"
 
