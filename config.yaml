@@ -36,6 +36,7 @@ i3:
     - "light"
   postlink:
     - "mkdir -p ~/.tmp"
+    - "timedatectl set-ntp true"
 
 i3status:
   link:
@@ -93,7 +94,7 @@ vim:
     - "*": "~"
     - ".*": "~"
   dependencies:
-    - "vim"
+    - "gvim"
     - "curl"
     - "ctags"
     - "pandoc"
