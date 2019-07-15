@@ -99,6 +99,7 @@ vim:
     - "ctags"
     - "pandoc"
     - "python-pip"
+    - "the_silver_searcher"
   postlink:
     - "mkdir -p ~/.vim/undo"
     - "mkdir -p ~/.vim/backup"
