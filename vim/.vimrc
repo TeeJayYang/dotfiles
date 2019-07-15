@@ -89,10 +89,13 @@ if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
 
-" Using Ag for global grep
-command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+  " Use ag for FZF
+  let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
-nnoremap ? :Ag<SPACE>
+  " Using Ag for global grep
+  command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+
+  nnoremap ? :Ag<SPACE>
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'

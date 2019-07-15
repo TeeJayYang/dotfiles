@@ -1,5 +1,5 @@
 [user]
-  email = teejayyang35@gmail.com 
+  email = tyang@splunk.com
   name = TJ Yang 
 
 [github]
@@ -35,7 +35,7 @@
   c = clone --recursive
 
   # Switch to a branch, creating it if necessary
-  co = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+  co = !git checkout $(git branch | fzf)
 
   # Show verbose output about tags, branches or remotes
   tags = tag -l
