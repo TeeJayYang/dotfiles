@@ -7,6 +7,7 @@ set showcmd         " show commands while they are being typed
 set ignorecase      " case insensitive searching
 set smartcase       " smart case searching
 set background=dark " force dark background on terminal transparency
+set cursorline
 hi clear SpellBad
 hi SpellBad cterm=underline ctermfg=1
 hi clear SpellCap
@@ -16,11 +17,11 @@ hi link SearchLight IncSearch
 
 set mouse=a         " allow proper scrolling with mouse wheel
 set hlsearch        " hightlight search terms
-set tabstop=2       " The width of a TAB
+set tabstop=4       " The width of a TAB
 
-set shiftwidth=2    " Indent width
+set shiftwidth=4    " Indent width
 
-set softtabstop=2  " Sets the number of columns for a TAB
+set softtabstop=4  " Sets the number of columns for a TAB
 
 set expandtab       " Expand TABs to spaces
 set autoindent
@@ -334,11 +335,11 @@ let g:colorizer_auto_filetype='css,html,conf,dosini,xdefaults'
 
 "" Ale
 let g:ale_linters = {
-      \ 'cpp': [ 'gcc', 'clang', 'cppcheck' ],
-      \ 'java': [ 'javac' ],
-      \ 'javascript': [ 'eslint' ],
-      \ 'python': [ 'autopep', 'flake8', 'pylint' ],
-      \}
+        \ 'cpp': [ 'gcc', 'clang', 'cppcheck' ],
+        \ 'java': [ 'javac' ],
+        \ 'javascript': [ 'eslint' ],
+        \ 'python': [ 'autopep', 'flake8', 'pylint', 'pyls' ],
+        \}
 
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
@@ -348,6 +349,16 @@ let g:ale_set_quickfix = 0
 let g:ale_sign_column_always = 1
 let g:ale_open_list = 0
 let g:ale_virtualenv_dir_names = ['.env', '.venv', 'env', 've-py3', 've', 'virtualenv', 'venv']
+let g:ale_completion_enabled = 1
+let g:ale_python_pyls_config = {
+        \  'pyls': {
+        \    'plugins': {
+        \      'pycodestyle': {
+        \        'enabled': v:false
+        \      },
+        \    }
+        \  },
+        \}
 nmap <silent> <C-p> <Plug>(ale_previous_wrap)
 nmap <silent> <C-n> <Plug>(ale_next_wrap)
 nmap <leader>l :lop<CR>
@@ -372,7 +383,7 @@ let g:crystalline_statusline_fn = 'StatusLine'
 let g:crystalline_tabline_fn = 'TabLine'
 let g:crystalline_theme = 'onedark'
 
-set showtabline=2
+" set showtabline=2
 set guioptions-=e
 set laststatus=2
 

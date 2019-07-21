@@ -13,7 +13,7 @@ URxvt*scrollBar:                false
 URxvt*scrollBar_right:          false
 URxvt*scrollcolor:              #ffffff
 URxvt*thickness:                5
-URxvt*internalBorder:           15
+URxvt*internalBorder:           7
 URxvt*buffered:                 true
 URxvt*saveLines:                30000
 URxvt*hold:                     false
