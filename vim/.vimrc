@@ -8,6 +8,7 @@ set ignorecase      " case insensitive searching
 set smartcase       " smart case searching
 set background=dark " force dark background on terminal transparency
 set cursorline
+set completeopt=menu,menuone,preview,noselect,noinsert
 hi clear SpellBad
 hi SpellBad cterm=underline ctermfg=1
 hi clear SpellCap
@@ -337,8 +338,12 @@ let g:colorizer_auto_filetype='css,html,conf,dosini,xdefaults'
 let g:ale_linters = {
         \ 'cpp': [ 'gcc', 'clang', 'cppcheck' ],
         \ 'java': [ 'javac' ],
-        \ 'javascript': [ 'eslint' ],
+        \ 'javascript': [ 'eslint', 'tsserver' ],
         \ 'python': [ 'autopep', 'flake8', 'pylint', 'pyls' ],
+        \}
+let g:ale_fixers = {
+        \ 'javascript': [ 'prettier', 'eslint' ],
+        \ 'python': [ 'yapf' ],
         \}
 
 let g:ale_echo_msg_error_str = 'E'
@@ -359,9 +364,11 @@ let g:ale_python_pyls_config = {
         \    }
         \  },
         \}
+let g:ale_linters_ignore = {'javascript':['tsserver']}
 nmap <silent> <C-p> <Plug>(ale_previous_wrap)
 nmap <silent> <C-n> <Plug>(ale_next_wrap)
 nmap <leader>l :lop<CR>
+nmap <leader>= :ALEFix<CR>
 
 "" Clear the gutter color
 highlight clear SignColumn
@@ -410,6 +417,3 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal! g'\"" | endif
 endif
-
-" Changing formatting option depending on file type
-autocmd FileType python setlocal equalprg=yapf
