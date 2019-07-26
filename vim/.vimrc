@@ -128,8 +128,6 @@ noremap <leader>rr :source ~/.vimrc<CR>
 noremap <leader>p "+p
 noremap <leader>y "+y
 
-noremap <leader>ss :%s/\(\ \+$\)//g<CR><C-o>:noh<CR>
-
 let g:Tex_leader="\<Space>"
 
 " collapsing with space
@@ -342,6 +340,7 @@ let g:ale_linters = {
         \ 'python': [ 'autopep', 'flake8', 'pylint', 'pyls' ],
         \}
 let g:ale_fixers = {
+        \ '*': [ 'remove_trailing_lines', 'trim_whitespace' ],
         \ 'javascript': [ 'prettier', 'eslint' ],
         \ 'python': [ 'yapf' ],
         \}
@@ -368,7 +367,7 @@ let g:ale_linters_ignore = {'javascript':['tsserver']}
 nmap <silent> <C-p> <Plug>(ale_previous_wrap)
 nmap <silent> <C-n> <Plug>(ale_next_wrap)
 nmap <leader>l :lop<CR>
-nmap <leader>= :ALEFix<CR>
+nmap <leader>ss :ALEFix<CR>
 
 "" Clear the gutter color
 highlight clear SignColumn
