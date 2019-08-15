@@ -33,3 +33,5 @@ set -o vi
 [[ -f ~/.Xresources ]] && xrdb ~/.Xresources
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}:${PWD}\007"'
+export HISTSIZE=5000
+export HISTFILESIZE=10000
