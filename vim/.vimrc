@@ -16,11 +16,11 @@ hi link SearchLight IncSearch
 
 set mouse=a         " allow proper scrolling with mouse wheel
 set hlsearch        " hightlight search terms
-set tabstop=2       " The width of a TAB
+set tabstop=4       " The width of a TAB
 
-set shiftwidth=2    " Indent width
+set shiftwidth=4    " Indent width
 
-set softtabstop=2  " Sets the number of columns for a TAB
+set softtabstop=4  " Sets the number of columns for a TAB
 
 set expandtab       " Expand TABs to spaces 
 set autoindent
@@ -54,10 +54,10 @@ nnoremap j gj
 nnoremap k gk
 xnoremap j gj
 xnoremap k gk
-nnoremap H ^
-nnoremap L $
-xnoremap H ^
-xnoremap L $
+nnoremap H b
+nnoremap L e
+xnoremap H b
+xnoremap L e
 
 " vim window navigation
 nnoremap <C-J> <C-W><C-J>
@@ -338,6 +338,8 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_set_quickfix = 0
 let g:ale_sign_column_always = 1
 let g:ale_open_list = 0
+let g:ale_cpp_gcc_options= '-Wall --std=c++17'
+let g:ale_cpp_clang_options= '-Wall --std=c++17'
 nmap <silent> <S-Tab> <Plug>(ale_previous_wrap)
 nmap <silent> <Tab> <Plug>(ale_next_wrap)
 nmap <leader>l :lop<CR>
