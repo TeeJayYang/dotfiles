@@ -7,6 +7,8 @@ set showcmd         " show commands while they are being typed
 set ignorecase      " case insensitive searching
 set smartcase       " smart case searching
 set background=dark " force dark background on terminal transparency
+set cursorline
+set completeopt=menu,menuone,preview,noselect,noinsert
 hi clear SpellBad
 hi SpellBad cterm=underline ctermfg=1
 hi clear SpellCap
@@ -22,7 +24,7 @@ set shiftwidth=4    " Indent width
 
 set softtabstop=4  " Sets the number of columns for a TAB
 
-set expandtab       " Expand TABs to spaces 
+set expandtab       " Expand TABs to spaces
 set autoindent
 
 set undofile        " Persistent undo
@@ -89,6 +91,14 @@ if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
 
+  " Use ag for FZF
+  let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+
+  " Using Ag for global grep
+  command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+
+  nnoremap ? :Ag<SPACE>
+
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 
@@ -104,8 +114,7 @@ inoremap <C-BS> <C-\><C-o>db
 
 set backspace=indent,eol,start
 
-" Remapping the command line window because
-" I'm a terrible typist
+" Remapping the command line window
 map q: :q
 
 " yanking moves cursor to end of yanked text
@@ -119,8 +128,6 @@ noremap <leader>rr :source ~/.vimrc<CR>
 noremap <leader>p "+p
 noremap <leader>y "+y
 
-noremap <leader>ss :%s/\(\ \+$\)//g<CR><C-o>:noh<CR>
-
 let g:Tex_leader="\<Space>"
 
 " collapsing with space
@@ -129,6 +136,7 @@ nnoremap <leader>a za
 "syntax highlighting
 " for Jenkinsfile
 au BufNewFile,BufRead Jenkinsfile setf groovy
+
 " Plugins===========================
 """ Plugins
 "" Download vim-plug if it does not exist
@@ -275,9 +283,10 @@ noremap <leader>- :Pandoc pdf<CR>
 
 " config for Guentags
 let g:gutentags_cache_dir = '~/.tags'
+" let g:gutentags_trace = 1
 let g:gutentags_generate_on_empty_buffer = 1
 let g:gutentags_define_advanced_commands = 1
-let g:gutentags_file_list_command = 'find . \( -name \*.h -o -name \*.cpp -o -name \*.c -o -name \*.java \)'
+let g:gutentags_ctags_exclude = ["*.min.js", "*.min.css", "build", "vendor", ".git", "node_modules", "*.vim/bundle/*"]
 
 " config for vim-commentary
 au FileType cpp setl cms=//\ %s
@@ -325,24 +334,42 @@ let g:colorizer_auto_filetype='css,html,conf,dosini,xdefaults'
 
 "" Ale
 let g:ale_linters = {
-      \ 'cpp': [ 'gcc', 'clang', 'cppcheck' ],
-      \ 'java': [ 'javac' ],
-      \ 'javascript': [ 'eslint' ],
-      \ 'python': [ 'autopep', 'flake8', 'pylint' ],
-      \}
+        \ 'cpp': [ 'gcc', 'clang', 'cppcheck' ],
+        \ 'java': [ 'javac' ],
+        \ 'javascript': [ 'eslint', 'tsserver' ],
+        \ 'python': [ 'autopep', 'flake8', 'pylint', 'pyls' ],
+        \}
+let g:ale_fixers = {
+        \ '*': [ 'remove_trailing_lines', 'trim_whitespace' ],
+        \ 'javascript': [ 'prettier', 'eslint' ],
+        \ 'python': [ 'yapf' ],
+        \}
 
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_set_quickfix = 0
-let g:ale_sign_column_always = 1
+let g:ale_sign_column_always = 0
 let g:ale_open_list = 0
 let g:ale_cpp_gcc_options= '-Wall --std=c++17'
 let g:ale_cpp_clang_options= '-Wall --std=c++17'
-nmap <silent> <S-Tab> <Plug>(ale_previous_wrap)
-nmap <silent> <Tab> <Plug>(ale_next_wrap)
+let g:ale_virtualenv_dir_names = ['.env', '.venv', 'env', 've-py3', 've', 'virtualenv', 'venv']
+let g:ale_completion_enabled = 1
+let g:ale_python_pyls_config = {
+        \  'pyls': {
+        \    'plugins': {
+        \      'pycodestyle': {
+        \        'enabled': v:false
+        \      },
+        \    }
+        \  },
+        \}
+let g:ale_linters_ignore = {'javascript':['tsserver']}
+nmap <silent> <C-p> <Plug>(ale_previous_wrap)
+nmap <silent> <C-n> <Plug>(ale_next_wrap)
 nmap <leader>l :lop<CR>
+nmap <leader>ss :ALEFix<CR>
 
 "" Clear the gutter color
 highlight clear SignColumn
@@ -364,7 +391,8 @@ let g:crystalline_statusline_fn = 'StatusLine'
 let g:crystalline_tabline_fn = 'TabLine'
 let g:crystalline_theme = 'onedark'
 
-set showtabline=2
+" set showtabline=2
+set guioptions-=e
 set laststatus=2
 
 "" Colorscheme config

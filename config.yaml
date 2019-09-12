@@ -11,6 +11,9 @@ dunst:
   dependencies:
     - "dunst"
 
+fonts:
+  link: "~/.local/share/fonts"
+
 git:
   link: "~"
 
@@ -33,6 +36,7 @@ i3:
     - "light"
   postlink:
     - "mkdir -p ~/.tmp"
+    - "timedatectl set-ntp true"
 
 i3status:
   link:
@@ -90,11 +94,12 @@ vim:
     - "*": "~"
     - ".*": "~"
   dependencies:
-    - "vim"
+    - "gvim"
     - "curl"
     - "ctags"
     - "pandoc"
     - "python-pip"
+    - "the_silver_searcher"
   postlink:
     - "mkdir -p ~/.vim/undo"
     - "mkdir -p ~/.vim/backup"
