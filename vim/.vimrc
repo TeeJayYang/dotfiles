@@ -26,6 +26,7 @@ set softtabstop=4  " Sets the number of columns for a TAB
 
 set expandtab       " Expand TABs to spaces
 set autoindent
+set modeline        " enable modeline
 
 set undofile        " Persistent undo
 set undodir=~/.vim/undo//
@@ -341,8 +342,8 @@ let g:ale_linters = {
         \}
 let g:ale_fixers = {
         \ '*': [ 'remove_trailing_lines', 'trim_whitespace' ],
-        \ 'javascript': [ 'prettier', 'eslint' ],
-        \ 'python': [ 'yapf' ],
+        \ 'javascript': [ 'prettier', 'eslint', 'remove_trailing_lines', 'trim_whitespace' ],
+        \ 'python': [ 'yapf', 'remove_trailing_lines', 'trim_whitespace' ],
         \}
 
 let g:ale_echo_msg_error_str = 'E'

@@ -3,7 +3,7 @@ Configs for Linux
 
 # Software
 ```
-distro          ->  solus
+distro          ->  manjaro
 de/wm           ->  i3-gaps w/ polybar
 editor          ->  vim
 file explorer   ->  ranger

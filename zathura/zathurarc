@@ -7,6 +7,9 @@ set selection-clipboard clipboard
 
 # enable incremental search
 set incremental-search true
+#
+# Open document in "best-fit" mode by default.
+set adjust-open "best-fit"
 
 # replace $HOME with ~
 set statusbar-home-tilde true
