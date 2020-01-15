@@ -11,6 +11,9 @@ dunst:
   dependencies:
     - "dunst"
 
+fonts:
+  link: "~/.local/share/fonts"
+
 git:
   link: "~"
 
@@ -21,29 +24,34 @@ i3:
   dependencies:
     - "i3lock"
     - "rofi"
-    - "imagemagick"
     - "xbacklight"
     - "xclip"
-    - "redshift"
     - "ranger"
     - "feh"
-    - "network-manager"
     - "scrot"
   postlink:
     - "mkdir -p ~/.tmp"
 
-i3status:
-  link:
-    - "*": "~/.config/i3status"
-    - ".*": "~/.config/i3status"
+rofi:
+  link: "~/.config/rofi"
   dependencies:
-    - "i3status"
+    - "rofi"
+
+# apt install build-essential git cmake cmake-data pkg-config python3-sphinx libcairo2-dev libxcb1-dev libxcb-util0-dev libxcb-randr0-dev libxcb-composite0-dev python-xcbgen xcb-proto libxcb-image0-dev libxcb-ewmh-dev libxcb-icccm4-dev
+
+# ./build.sh -3 -a -f -A -j
+
+polybar:
+  link: "~/.config/polybar"
+  dependencies:
+    - "polybar"
+    - "libasound2-dev"
+    - "libiw-dev"
 
 ranger:
   link: "~/.config/ranger"
   dependencies:
     - "ranger"
-    - "imagemagick"
     - "w3m"
     - "feh"
 
@@ -64,7 +72,6 @@ vim:
   dependencies:
     - "vim"
     - "curl"
-    - "ctags"
     - "pandoc"
     - "python-pip"
     - "python3-pip"
@@ -72,10 +79,3 @@ vim:
   postlink:
     - "mkdir -p ~/.vim/undodir"
     - "mkdir -p ~/.vim/backup"
-
-zathura:
-    link:
-    - zathurarc: "~/.config/zathura"
-    dependencies:
-    - "zathura"
-    - "texlive-all"

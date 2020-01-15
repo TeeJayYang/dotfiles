@@ -1,16 +1,19 @@
 Xft.dpi:                        96
 Xft.antialias:                  true
 
-URxvt*termName:                 xterm-256color
-URxvt*font:                     xft:Monospace:pixelsize=14:antialias=true
-URxvt*depth:                    32
+URxvt*termName:                 xterm-256color 
+URxvt*font:                     xft:Hack:style=Regular:pixelsize=16:antialias=true,\
+                                xft:Font Awesome 5 Free:style=Solid,\
+                                xft:Font Awesome 5 Free:style=Regular
+URxvt*depth: 32
 /* URxvt*lineSpace:                1 */
 /* URxvt*letterSpace:              -0.5 */
-URxvt*scrollBar:                true
+/* URxvt*scrollBar:                true */
+URxvt*scrollBar:                false
 URxvt*scrollBar_right:          false
 URxvt*scrollcolor:              #ffffff
 URxvt*thickness:                5
-URxvt*internalBorder:           28
+URxvt*internalBorder:           7
 URxvt*buffered:                 true
 URxvt*saveLines:                30000
 URxvt*hold:                     false
@@ -26,6 +29,11 @@ URxvt*iso14755_52:              false
 URxvt*scrollTtyOutput:          false
 URxvt*scrollWithBuffer:         true
 URxvt*scrollTtyKeypress:        true
+URxvt.perl-ext-common:          default,matcher
+URxvt.url-launcher:             /usr/bin/xdg-open
+URxvt.matcher.button:           3
+URxvt.matcher.pattern.1:        \\bwww\\.[\\w-]\\.[\\w./?&amp;@#-]*[\\w/-]
+
 
 URxvt*transparent: false
 /* shading - 0 to 99 darkens, 101 - 200 lightens */
@@ -33,23 +41,62 @@ URxvt*shading: 113
 URxvt*tintColor: #483D8B
 
 ! Dracula Color Scheme
-*foreground:  #F8F8F2
-*background:  #282A36
-*color0:      #000000
-*color8:      #4D4D4D
-*color1:      #FF5555
-*color9:      #FF6E67
-*color2:      #50FA7B
-*color10:     #5AF78E
-*color3:      #F1FA8C
-*color11:     #F4F99D
-*color4:      #BD93F9
-*color12:     #CAA9FA
-*color5:      #FF79C6
-*color13:     #FF92D0
-*color6:      #8BE9FD
-*color14:     #9AEDFE
-*color7:      #BFBFBF
-*color15:     #E6E6E6
+/* *foreground:  #F8F8F2 */
+/* *background:  #282A36 */
+/* *color0:      #000000 */
+/* *color8:      #4D4D4D */
+/* *color1:      #FF5555 */
+/* *color9:      #FF6E67 */
+/* *color2:      #50FA7B */
+/* *color10:     #5AF78E */
+/* *color3:      #F1FA8C */
+/* *color11:     #F4F99D */
+/* *color4:      #BD93F9 */
+/* *color12:     #CAA9FA */
+/* *color5:      #FF79C6 */
+/* *color13:     #FF92D0 */
+/* *color6:      #8BE9FD */
+/* *color14:     #9AEDFE */
+/* *color7:      #BFBFBF */
+/* *color15:     #E6E6E6 */
+/* URxvt*background: #282A36 */
 
-URxvt*background: [80]#282A36
+! One Dark Color Scheme
+! special
+*.foreground:   #ABB2BF
+*.background:   #282C34
+*.cursorColor:  #ABB2BF
+
+! black
+*.color0:       #282C34
+*.color8:       #3E4452
+
+! red
+*.color1:       #E06C75
+*.color9:       #BE5046
+
+! green
+*.color2:       #98C379
+*.color10:      #98C379
+
+! yellow
+*.color3:       #E5C07B
+*.color11:      #D19A66
+
+! blue
+*.color4:       #61AFEF
+*.color12:      #61AFEF
+
+! magenta
+*.color5:       #C678DD
+*.color13:      #C678DD
+
+! cyan
+*.color6:       #56B6C2
+*.color14:      #56B6C2
+
+! white
+*.color7:       #ABB2BF
+*.color15:      #5C6370
+
+URxvt*background: #282C34

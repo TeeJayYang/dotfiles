@@ -46,10 +46,8 @@ bindsym $mod+Shift+apostrophe exec "rofi -show ssh -i"
 bindsym $mod+apostrophe exec "rofi -show run -i"
 
 # Screenshotting stuff
-bindsym Print exec --no-startup-id rm ~/.tmp/tmp.png -f && scrot ~/.tmp/tmp.png && xclip ~/.tmp/tmp.png -selection clipboard -t image/png && notify-send -u "low" "Took screenshot (window)"
+bindsym Print exec --no-startup-id rm ~/.tmp/tmp.png -f && scrot ~/.tmp/tmp.png && xclip ~/.tmp/tmp.png -selection clipboard -t image/png && notify-send -u "low" "Took screenshot (Desktop)"
 bindsym --release Shift+Print exec --no-startup-id rm ~/.tmp/tmp.png -f && scrot -s ~/.tmp/tmp.png && xclip ~/.tmp/tmp.png -selection clipboard -t image/png && notify-send -u "low" "Took screenshot (area)"
-
-# start rofi
 
 # change focus
 bindsym $mod+h focus left
@@ -71,9 +69,9 @@ bindsym $mod+Shift+l move right
 
 # moving entire workspace
 bindsym $mod+Shift+Left move workspace to output left
-# bindsym $mod+Shift+Down move down
-# bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move workspace to output right
+bindsym $mod+Shift+Down move workspace to output down
+bindsym $mod+Shift+Up move workspace to output up
 
 # split in horizontal orientation
 bindsym $mod+Shift+v split h
@@ -163,13 +161,16 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -D pulse set Master 5%+; pkill -RTMIN+10 i3blocks"
-bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -D pulse set Master 5%-; pkill -RTMIN+10 i3blocks"
-bindsym XF86AudioMute exec --no-startup-id "amixer -D pulse set Master 0+ toggle ; pkill -RTMIN+10 i3blocks"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer set Master 5%+"
+bindsym XF86AudioLowerVolume exec --no-startup-id "amixer set Master 5%-"
+bindsym XF86AudioMute exec --no-startup-id "amixer set Master 0+ toggle"
+
+# other sound things
+bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec light -A 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec light -U 10 # increase screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10  # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # increase screen brightness
 # Touchpad controls
 bindsym XF86TouchpadToggle exec toggle-touchpad
 
@@ -183,52 +184,47 @@ bindsym XF86AudioPrev exec mpc prev
 # exec --no-startup-id /usr/bin/xinput set-prop "ELAN1010:00 04F3:3012 Touchpad" "libinput Natural Scrolling Enabled" 1
 exec_always --no-startup-id setup-touchpad
 
-# Power shit
 # lock screen and suspend
 bindsym $mod+Shift+End exec "lock && systemctl suspend"
 bindsym $mod+Shift+Home exec lock
 bindsym $mod+Shift+x exec lock
+
 ########## Styling shit and autostartup #################
-exec_always --no-startup-id compton -f --config ~/.config/compton/compton.conf
-exec --no-startup-id dunst -c ~/.config/dunst/dunstrc
+exec_always --no-startup-id "killall compton; compton --config ~/.config/compton/compton.conf"
+exec --no-startup-id "killall dunst; dunst -c ~/.config/dunst/dunstrc"
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id setup-displays
-exec_always feh --bg-scale ~/.config/i3/wallpaper.png
+exec_always feh --bg-fill ~/.config/i3/wallpaper.png
 exec_always --no-startup-id "xset r rate 200 50"
-exec --no-startup-id redshift
-# exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Color definitions
-set $base03    #002b36
-set $base02    #073642
-set $base01    #586e75
-set $base00    #657b83
-set $base0     #839496
-set $base1     #93a1a1
-set $base2     #eee8d5
-set $base3     #fdf6e3
-set $yellow    #b58900
-set $orange    #cb4b16
-set $red       #dc322f
-set $magenta   #d33682
-set $violet    #6c71c4
-set $blue      #268bd2
-set $cyan      #2aa198
-set $green     #859900
+set $color0       #282C34
+set $color8       #3E4452
+set $color1       #E06C75
+set $color9       #BE5046
+set $color2       #98C379
+set $color10      #98C379
+set $color3       #E5C07B
+set $color11      #D19A66
+set $color4       #61AFEF
+set $color12      #61AFEF
+set $color5       #C678DD
+set $color13      #C678DD
+set $color6       #56B6C2
+set $color14      #56B6C2
+set $color7       #ABB2BF
+set $color15      #5C6370
 
-set $active-bar-bg-color     #fdf6e3
-set $inactive-bar-bg-color   #93a1a1
-set $active-bar-text-color   #002b36
-set $inactive-bar-text-color #002b36
 #                  RRGGBBAA
 set $transparent  #00000050
 
 # Window colors
 #                       border     background    text      indicator
-client.focused          $base03    $red          $base2    $red
-client.unfocused        $base03    $base03       $base2    $base03
-client.focused_inactive $base03    $base03       $base2    $base03
-client.urgent           $base03    $base03       $red      $red
+client.focused          $color4    $color4      $color0    $color4
+client.unfocused        $color15   $color0      $color7    $color0
+client.focused_inactive $color15   $color0      $color7    $color0
+client.urgent           $color1    $color1      $color0    $color1
 
 # Window gaps and borders
 hide_edge_borders both
@@ -242,17 +238,17 @@ gaps outer 2
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-  i3bar_command i3bar -t
-  status_command i3status
-  position top
-  font pango: 15
-  colors {
-      background $transparent
+# bar {
+#   i3bar_command i3bar -t
+#   status_command i3status
+#   position top
+#   font pango:Hack-Regular 15
+#   colors {
+#       background $transparent
 
-      focused_workspace #3685e2 #3685e2 #fafafa
-      active_workspace #5294e2 #5294e2 #fafafa
-      inactive_workspace #000000 #000000 #fafafa
-      urgent_workspace #ff5757 #ff5757 #fafafa
-  }
-}
+#       focused_workspace #3685e2 #3685e2 #fafafa
+#       active_workspace #5294e2 #5294e2 #fafafa
+#       inactive_workspace #000000 #000000 #fafafa
+#       urgent_workspace #ff5757 #ff5757 #fafafa
+#   }
+# }

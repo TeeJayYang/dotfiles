@@ -20,7 +20,7 @@ apt-get install -q -y   -o Dpkg::Options::="--force-confdef" \
                         -o Dpkg::Options::="--force-confold" \
 libxcb1-dev libxcb-keysyms1-dev libpango1.0-dev libxcb-util0-dev \
 libxcb-icccm4-dev libyajl-dev libstartup-notification0-dev libxcb-randr0-dev \
-libev-dev libxcb-cursor-dev libxcb-xinerama0-dev libxcb-xkb-dev \
+libev-dev libxcb-cursor-dev libxcb-shape0-dev libxcb-xinerama0-dev libxcb-xkb-dev \
 libxkbcommon-dev libxkbcommon-x11-dev autoconf
 
 
@@ -38,8 +38,3 @@ mkdir -p build && cd build/
 ../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
 make
 make install
-
-# install misc. i3 packages
-apt-get install -q -y	-o Dpkg::Options::="--force-confdef" \
-						-o Dpkg::Options::="--force-confold" \
-i3lock i3status dmenu dunst

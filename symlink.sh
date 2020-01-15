@@ -24,10 +24,17 @@ for folder in bin; do
 done
 
 ## Link to .config/$folder
-for folder in compton i3 i3status; do
+for folder in polybar rofi compton i3 i3status ranger; do
     mkdir -pv ~/.config/$folder
     for f in $DOTFILES_DIR/$folder/*; do
         ln -sfv "$f" ~/.config/$folder
+    done
+done
+
+for folder in fonts; do
+    mkdir -pv ~/.config/$folder
+    for f in $DOTFILES_DIR/$folder/*; do
+        ln -sfv "$f" ~/.local/share/$folder
     done
 done
 

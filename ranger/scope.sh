@@ -77,6 +77,7 @@ case "$extension" in
         try 7z -p l "$path" && { dump | trim; exit 0; } || exit 1;;
     # PDF documents:
     pdf)
+        try pdftoppm -jpeg -singlefile "$path" "${cached//.jpg/}" && exit 6 || exit 1
         try convert -quality 80 -density 300 -interlace none "$path[0]" "${cached}" && exit 6;;
     # BitTorrent Files
     torrent)
@@ -94,7 +95,7 @@ esac
 
 case "$mimetype" in
     # Syntax highlight for text files:
-    text/* | */xml)
+    text/* | */xml | */json)
         if [ "$(tput colors)" -ge 256 ]; then
             pygmentize_format=terminal256
             highlight_format=ansi
