@@ -3,12 +3,12 @@ Configs for Linux
 
 # Software
 ```
-distro          ->  solus
-de/wm           ->  i3-gaps w/ i3bar
+distro          ->  ubuntu
+de/wm           ->  i3-gaps w/ polybar
 editor          ->  vim
 file explorer   ->  ranger
-image viewer    ->  sxiv
-pdf viewer      ->  zathura
+image viewer    ->  sxiv (unused)
+pdf viewer      ->  zathura (unused)
 shell           ->  bash
 terminal        ->  urxvt
 dmenu           ->  rofi
@@ -36,7 +36,7 @@ virtualenv --python=python3.6 venv
 source venv/bin/activate
 ```
 
-3. Install and run `dotinstall` (and compile `xrdb` from source optionally)
+3. Install and run `dotinstall` (and compile `xcwd` from source optionally)
 ```
 pip install dotinstall
 dotinstall
