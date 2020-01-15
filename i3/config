@@ -161,7 +161,7 @@ bindsym $mod+r mode "resize"
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer set Master 5%+"
 bindsym XF86AudioLowerVolume exec --no-startup-id "amixer set Master 5%-"
-bindsym XF86AudioMute exec --no-startup-id "amixer set Master 0+ toggle"
+bindsym XF86AudioMute exec --no-startup-id "amixer -D pulse set Master 0+ toggle"
 
 # other sound things
 bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
