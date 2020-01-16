@@ -159,8 +159,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer set Master 5%+"
-bindsym XF86AudioLowerVolume exec --no-startup-id "amixer set Master 5%-"
+bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -D pulse set Master 5%+"
+bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -D pulse set Master 5%-"
 bindsym XF86AudioMute exec --no-startup-id "amixer -D pulse set Master 0+ toggle"
 
 # other sound things
@@ -203,6 +203,7 @@ exec_always --no-startup-id nm-applet
 exec_always --no-startup-id setup-displays
 exec_always feh --bg-fill ~/.config/i3/wallpaper.png
 exec_always --no-startup-id "xset r rate 200 50"
+exec --no-startup-id redshift-gtk
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Color definitions
