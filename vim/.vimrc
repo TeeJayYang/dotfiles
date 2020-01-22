@@ -129,7 +129,7 @@ noremap <leader>rr :source ~/.vimrc<CR>
 noremap <leader>p "+p
 noremap <leader>y "+y
 
-noremap <leader>ss :%s/\(\ \+$\)//g<CR><C-o>
+" noremap <leader>ss :%s/\(\ \+$\)//g<CR><C-o>
 
 let g:Tex_leader="\<Space>"
 
@@ -165,6 +165,9 @@ highlight NonText ctermbg=none
 highlight LineNr ctermbg=none
 highlight VertSplit ctermbg=none
 
+" editor config
+Plug 'editorconfig/editorconfig-vim'
+
 " QoL things
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
@@ -184,11 +187,20 @@ Plug 'yggdroot/indentline'
 " Auto brackets
 Plug 'raimondi/delimitMate'
 
+" tags
+Plug 'ludovicchabant/vim-gutentags'
+
 " fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " highlighting for current search
 Plug 'peterrincker/vim-searchlight'
+
+" better syntax
+Plug 'sheerun/vim-polyglot'
+
+" linting
+Plug 'w0rp/ale'
 
 " statusline
 Plug 'rbong/vim-crystalline'
@@ -256,6 +268,33 @@ command! MRU call fzf#run(fzf#wrap({
       \ }))
 " ====================Plugin Configs
 
+
+
+"" Ale
+" let g:ale_linters = {
+"         \ 'cpp': [ 'clang' ],
+"         \}
+
+let g:ale_fixers = {
+        \ '*': [ 'remove_trailing_lines', 'trim_whitespace' ],
+        \ 'cpp': [ 'clang-format', 'remove_trailing_lines', 'trim_whitespace' ],
+        \}
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_linters_explicit = 1
+let g:ale_set_quickfix = 0
+let g:ale_sign_column_always = 0
+let g:ale_open_list = 0
+let g:ale_virtualenv_dir_names = ['.env', '.venv', 'env', 've-py3', 've', 'virtualenv', 'venv']
+" let g:ale_echo_cursor = 0
+" let g:ale_completion_enabled = 1
+
+nmap <silent> <C-p> <Plug>(ale_previous_wrap)
+nmap <silent> <C-n> <Plug>(ale_next_wrap)
+nmap <leader>l :lop<CR>
+nmap <leader>ss :ALEFix<CR>
 
 " statusline========================
 "" Clear the gutter color

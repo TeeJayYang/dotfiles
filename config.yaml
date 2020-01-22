@@ -17,6 +17,8 @@ fonts:
 git:
   link: "~"
 
+# sudo apt-get purge xserver-xorg-video-intel
+
 i3:
   link:
     - "*": "~/.config/i3"
