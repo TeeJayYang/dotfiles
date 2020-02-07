@@ -140,6 +140,9 @@ nnoremap <leader>a za
 " for Jenkinsfile
 au BufNewFile,BufRead Jenkinsfile setf groovy
 
+" ROS launch files
+au BufNewFile,BufRead *.launch setf xml
+
 " Plugins===========================
 """ Plugins
 "" Download vim-plug if it does not exist
@@ -189,6 +192,9 @@ Plug 'raimondi/delimitMate'
 
 " tags
 Plug 'ludovicchabant/vim-gutentags'
+
+" tmux navigation
+Plug 'christoomey/vim-tmux-navigator'
 
 " fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -266,6 +272,8 @@ command! Buffers call fzf#run(fzf#wrap({
 command! MRU call fzf#run(fzf#wrap({
       \ 'source': v:oldfiles,
       \ }))
+
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'rounded': v:true} }
 " ====================Plugin Configs
 
 
