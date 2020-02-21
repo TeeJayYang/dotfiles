@@ -210,6 +210,9 @@ Plug 'w0rp/ale'
 
 " statusline
 Plug 'rbong/vim-crystalline'
+
+" code context
+" Plug 'wellle/context.vim'
 call plug#end()
 
 " ===========================Plugins
@@ -279,13 +282,14 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo
 
 
 "" Ale
-" let g:ale_linters = {
-"         \ 'cpp': [ 'clang' ],
-"         \}
+let g:ale_linters = {
+        \ 'python': [ 'flake8' ],
+        \}
 
 let g:ale_fixers = {
         \ '*': [ 'remove_trailing_lines', 'trim_whitespace' ],
         \ 'cpp': [ 'clang-format', 'remove_trailing_lines', 'trim_whitespace' ],
+        \ 'python': [ 'yapf' ],
         \}
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'

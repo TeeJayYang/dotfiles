@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+OPTS="
+$FZF_DEFAULT_OPTS
+--ansi
+--height='80%'
+--bind='up:preview-up,alt-p:preview-up'
+--bind='down:preview-down,alt-n:preview-down'
+--bind='ctrl-r:toggle-all'
+--bind='ctrl-s:toggle-sort'
+--bind='?:toggle-preview'
+--preview-window='right:60%'
+"
+
+fdiff() {
+    git rev-parse --is-inside-work-tree >/dev/null || return 1
+    local cmd files opts commit repo
+    [[ $# -ne 0 ]] && {
+        if git rev-parse "$1" -- &>/dev/null ; then
+            commit="$1" && files=("${@:2}")
+        else
+            files=("$@")
+        fi
+    }
+
+    repo="$(git rev-parse --show-toplevel)"
+    target="\$(echo {} | sed 's/.*]  //')"
+    cmd="git diff --color=always $commit -- $repo/$target"
+    opts="
+        $OPTS
+        +m -0 --preview=\"$cmd\" --bind=\"enter:execute($cmd |LESS='-R' less)\"
+    "
+    eval "git diff --name-status $commit -- ${files[*]} | sed -E 's/^(.)[[:space:]]+(.*)$/[\1]  \2/'" |
+        FZF_DEFAULT_OPTS="$opts" fzf
+}
+
+fdiff
