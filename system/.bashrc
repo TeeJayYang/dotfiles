@@ -11,7 +11,7 @@ parse_git_branch() {
 }
 export PS1="\[\033[38;5;245m\]\w\[\033[33m\]\$(parse_git_branch) \[\e[0m\] \n "
 if [ -n "$SSH_CLIENT" ]; then
-  export PS1= "(ssh) $PS1"
+  export PS1="(ssh) $PS1"
 fi
 
 function ranger-cd {
@@ -35,3 +35,4 @@ set -o vi
 PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}:${PWD}\007"'
 export HISTSIZE=5000
 export HISTFILESIZE=10000
+export HISTCONTROL=ignoreboth
