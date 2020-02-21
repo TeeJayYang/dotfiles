@@ -33,7 +33,7 @@ fadd() {
         if (git status -s -- \$file | grep '^??') &>/dev/null; then  # diff with /dev/null for untracked files
             git diff --color=always --no-index -- /dev/null \$file | sed '2 s/added:/untracked:/'
         else
-            git diff --color=always -- \$file
+            git diff --color=always -- \$file | fancy-diff
         fi"
     opts="
         $OPTS

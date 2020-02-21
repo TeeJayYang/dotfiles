@@ -25,7 +25,7 @@ fdiff() {
 
     repo="$(git rev-parse --show-toplevel)"
     target="\$(echo {} | sed 's/.*]  //')"
-    cmd="git diff --color=always $commit -- $repo/$target"
+    cmd="git diff --color=always $commit -- $repo/$target | fancy-diff"
     opts="
         $OPTS
         +m -0 --preview=\"$cmd\" --bind=\"enter:execute($cmd |LESS='-R' less)\"
