@@ -32,6 +32,7 @@ set -o vi
 
 [[ -f ~/.Xresources ]] && xrdb ~/.Xresources
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f /usr/share/bash-completion/completions/git ] && source /usr/share/bash-completion/completions/git
 PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}:${PWD}\007"'
 export HISTSIZE=5000
 export HISTFILESIZE=10000

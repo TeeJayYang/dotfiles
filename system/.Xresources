@@ -37,7 +37,7 @@ URxvt.matcher.pattern.1:        \\bwww\\.[\\w-]\\.[\\w./?&amp;@#-]*[\\w/-]
 
 URxvt*transparent: false
 /* shading - 0 to 99 darkens, 101 - 200 lightens */
-URxvt*shading: 113
+URxvt*shading: 100
 URxvt*tintColor: #483D8B
 
 ! Dracula Color Scheme
