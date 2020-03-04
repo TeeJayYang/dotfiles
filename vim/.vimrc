@@ -143,6 +143,12 @@ au BufNewFile,BufRead Jenkinsfile setf groovy
 " ROS launch files
 au BufNewFile,BufRead *.launch setf xml
 
+" Auto close the quickfix window if it's the last window
+aug QFClose
+  au!
+  au WinEnter * if winnr('$') == 1 && &buftype == "quickfix"|q|endif
+aug END
+
 " Plugins===========================
 """ Plugins
 "" Download vim-plug if it does not exist
@@ -277,8 +283,6 @@ command! MRU call fzf#run(fzf#wrap({
       \ }))
 
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'rounded': v:true} }
-" ====================Plugin Configs
-
 
 
 "" Ale
@@ -347,6 +351,9 @@ nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>f :FZF<CR>
 nnoremap <leader>m :MRU<CR>
 nnoremap <leader>t :Tags<CR>
+
+" Fugitive keybindings
+nnoremap gb :Gblame<CR>
 
 " Write with sudo
 cmap w!! w !sudo tee > /dev/null %
