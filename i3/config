@@ -30,7 +30,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt -cd "`xcwd`"
+bindsym $mod+Return exec urxvt -e tmux new -c "$(lastcwd)"
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -46,7 +46,6 @@ bindsym $mod+Shift+apostrophe exec "rofi -show ssh -i"
 bindsym $mod+apostrophe exec "rofi -show run -i"
 
 # Screenshotting stuff
-bindsym Print exec --no-startup-id rm ~/.tmp/tmp.png -f && scrot ~/.tmp/tmp.png && xclip ~/.tmp/tmp.png -selection clipboard -t image/png && notify-send -u "low" "Took screenshot (Desktop)"
 bindsym --release Shift+Print exec --no-startup-id rm ~/.tmp/tmp.png -f && scrot -s ~/.tmp/tmp.png && xclip ~/.tmp/tmp.png -selection clipboard -t image/png && notify-send -u "low" "Took screenshot (area)"
 
 # change focus
@@ -201,7 +200,8 @@ exec_always --no-startup-id "killall compton; compton --config ~/.config/compton
 exec_always --no-startup-id "killall dunst; dunst -c ~/.config/dunst/dunstrc"
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id setup-displays
-exec_always feh --bg-fill ~/.config/i3/wallpaper.png
+exec_always feh --bg-fill ~/.config/i3/wallpaper.png ~/.config/i3/tallwall.png
+# exec_always feh --bg-fill ~/.config/i3/wallpaper.png
 exec_always --no-startup-id "xset r rate 200 50"
 exec --no-startup-id redshift-gtk
 exec_always --no-startup-id ~/.config/polybar/launch.sh
