@@ -6,3 +6,5 @@ export PATH="$HOME/bin:$HOME/.bin:$HOME/.local:$HOME/.local/bin/:$PATH"
 #     . ~/.bashrc
 #   fi
 # fi
+
+export PATH="$HOME/.cargo/bin:$PATH"

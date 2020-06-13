@@ -96,7 +96,7 @@ if executable('ag')
   let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
   " Using Ag for global grep
-  command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+  command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 
   nnoremap ? :Ag<SPACE>
 
@@ -129,6 +129,8 @@ noremap <leader>rr :source ~/.vimrc<CR>
 noremap <leader>p "+p
 noremap <leader>y "+y
 
+" noremap <leader>ss :%s/\(\ \+$\)//g<CR><C-o>
+
 let g:Tex_leader="\<Space>"
 
 " collapsing with space
@@ -137,6 +139,15 @@ nnoremap <leader>a za
 "syntax highlighting
 " for Jenkinsfile
 au BufNewFile,BufRead Jenkinsfile setf groovy
+
+" ROS launch files
+au BufNewFile,BufRead *.launch setf xml
+
+" Auto close the quickfix window if it's the last window
+aug QFClose
+  au!
+  au WinEnter * if winnr('$') == 1 && &buftype == "quickfix"|q|endif
+aug END
 
 " Plugins===========================
 """ Plugins
@@ -163,6 +174,9 @@ highlight NonText ctermbg=none
 highlight LineNr ctermbg=none
 highlight VertSplit ctermbg=none
 
+" editor config
+Plug 'editorconfig/editorconfig-vim'
+
 " QoL things
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-fugitive'
@@ -186,11 +200,14 @@ Plug 'raimondi/delimitMate'
 Plug 'lervag/vimtex'
 
 " markdown pandoc
-Plug 'vim-pandoc/vim-pandoc-syntax'
-Plug 'vim-pandoc/vim-pandoc'
+" Plug 'vim-pandoc/vim-pandoc-syntax'
+" Plug 'vim-pandoc/vim-pandoc'
 
 " tags
 Plug 'ludovicchabant/vim-gutentags'
+
+" tmux navigation
+Plug 'christoomey/vim-tmux-navigator'
 
 " fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -204,7 +221,7 @@ Plug 'peterrincker/vim-searchlight'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 
 " markdown qol
-Plug 'reedes/vim-pencil'
+" Plug 'reedes/vim-pencil'
 
 " better syntax
 Plug 'sheerun/vim-polyglot'
@@ -218,6 +235,8 @@ Plug 'w0rp/ale'
 " statusline
 Plug 'rbong/vim-crystalline'
 
+" code context
+" Plug 'wellle/context.vim'
 call plug#end()
 
 " ===========================Plugins
@@ -270,17 +289,20 @@ let g:mkdp_preview_options = {
     \ }
 
 " Pandoc vim
-" let g:pandoc#command#autoexec_on_writes = 1
-" let g:pandoc#command#autoexec_command = "Pandoc pdf"
+let g:pandoc#command#autoexec_on_writes = 1
+let g:pandoc#command#autoexec_command = "Pandoc pdf"
 "
-" let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
+let g:pandoc#filetypes#handled = ["pandoc", "markdown"]
 " let g:pandoc#filetypes#pandoc_markdown = 0
 
 let g:pandoc#syntax#conceal#blacklist = ["codeblock_start","codeblock_delim","inlinecode", "quotes","list", "ellipses"]
 let g:pandoc#syntax#conceal#cchar_overrides = {"atx":"#"}
 let g:pandoc#syntax#style#use_definition_lists = 0
-let g:pandoc#modules#disabled = ["folding"]
-noremap <leader>- :Pandoc pdf<CR>
+" let g:pandoc#modules#disabled = ["folding"]
+let g:pandoc#command#use_message_buffers = 1
+" noremap <leader>- :Pandoc pdf<CR>
+autocmd FileType markdown noremap <buffer> <leader>- :!pandoc % -o %:r.pdf<CR>
+autocmd FileType markdown set spell
 
 " config for Guentags
 let g:gutentags_cache_dir = '~/.tags'
@@ -326,6 +348,8 @@ command! MRU call fzf#run(fzf#wrap({
       \ 'source': v:oldfiles,
       \ }))
 
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'rounded': v:true} }
+
 "" Config for Polyglot
 let g:polyglot_disabled = ['latex']
 
@@ -338,23 +362,28 @@ let g:ale_linters = {
         \ 'cpp': [ 'gcc', 'clang', 'cppcheck' ],
         \ 'java': [ 'javac' ],
         \ 'javascript': [ 'eslint', 'tsserver' ],
-        \ 'python': [ 'autopep', 'flake8', 'pylint', 'pyls' ],
+        \ 'python': [ 'autopep', 'flake8'],
         \}
+
 let g:ale_fixers = {
         \ '*': [ 'remove_trailing_lines', 'trim_whitespace' ],
+        \ 'cpp': [ 'clang-format', 'remove_trailing_lines', 'trim_whitespace' ],
         \ 'javascript': [ 'prettier', 'eslint', 'remove_trailing_lines', 'trim_whitespace' ],
         \ 'python': [ 'yapf', 'remove_trailing_lines', 'trim_whitespace' ],
+        \ 'go': [ 'gofmt', 'remove_trailing_lines', 'trim_whitespace' ],
         \}
 
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_lint_on_text_changed = 'never'
+let g:ale_linters_explicit = 1
 let g:ale_set_quickfix = 0
 let g:ale_sign_column_always = 0
 let g:ale_open_list = 0
 let g:ale_cpp_gcc_options= '-Wall --std=c++17'
 let g:ale_cpp_clang_options= '-Wall --std=c++17'
+let g:ale_c_clangformat_options= '-style="{BasedOnStyle: google, IndentWidth: 4}"'
 let g:ale_virtualenv_dir_names = ['.env', '.venv', 'env', 've-py3', 've', 'virtualenv', 'venv']
 let g:ale_completion_enabled = 1
 let g:ale_python_pyls_config = {
@@ -372,6 +401,7 @@ nmap <silent> <C-n> <Plug>(ale_next_wrap)
 nmap <leader>l :lop<CR>
 nmap <leader>ss :ALEFix<CR>
 
+" statusline========================
 "" Clear the gutter color
 highlight clear SignColumn
 
@@ -410,6 +440,9 @@ nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>f :FZF<CR>
 nnoremap <leader>m :MRU<CR>
 nnoremap <leader>t :Tags<CR>
+
+" Fugitive keybindings
+nnoremap gb :Gblame<CR>
 
 " Write with sudo
 cmap w!! w !sudo tee > /dev/null %

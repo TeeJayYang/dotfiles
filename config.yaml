@@ -1,10 +1,10 @@
 bin:
   link: "~/.bin"
 
-compton:
-  link: "~/.config/compton"
+picom:
+  link: "~/.config/picom"
   dependencies:
-    - "compton"
+    - "picom"
 
 dunst:
   link: "~/.config/dunst"
@@ -36,7 +36,7 @@ i3:
     - "light"
   postlink:
     - "mkdir -p ~/.tmp"
-    - "timedatectl set-ntp true"
+    - "#timedatectl set-ntp true"
 
 i3status:
   link:
@@ -85,7 +85,6 @@ system:
   link: "~"
   dependencies:
   - "rxvt-unicode"
-  - "xrdb"
 
 vim:
   link:

@@ -35,3 +35,11 @@ set -o vi
 PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}:${PWD}\007"'
 export HISTSIZE=5000
 export HISTFILESIZE=10000
+
+if ! pgrep -u "$USER" ssh-agent > /dev/null; then
+    ssh-agent > "$XDG_RUNTIME_DIR/ssh-agent.env"
+fi
+if [[ ! "$SSH_AUTH_SOCK" ]]; then
+    eval "$(<"$XDG_RUNTIME_DIR/ssh-agent.env")" > /dev/null
+fi
+export PATH="$PATH:$HOME/.gem/ruby/2.6.0/bin"

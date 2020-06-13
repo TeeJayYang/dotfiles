@@ -203,9 +203,9 @@ bindsym XF86AudioPrev exec mpc prev
 # exec --no-startup-id /usr/bin/xinput set-prop "ELAN1010:00 04F3:3012 Touchpad" "libinput Natural Scrolling Enabled" 0
 exec_always --no-startup-id setup-touchpad
 
-########## Styling shit and autostartup #################
-exec_always --no-startup-id "killall compton; compton --config ~/.config/compton/compton.conf"
-exec --no-startup-id "killall dunst; dunst -c ~/.config/dunst/dunstrc"
+
+exec_always --no-startup-id "killall picom; picom --config ~/.config/picom/picom.conf"
+exec_always --no-startup-id "killall dunst; dunst -c ~/.config/dunst/dunstrc"
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id setup-displays
 exec_always feh --bg-fill ~/.config/i3/wallpaper.png
