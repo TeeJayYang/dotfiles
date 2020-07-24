@@ -223,6 +223,9 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }}
 " markdown qol
 " Plug 'reedes/vim-pencil'
 
+" document editing
+Plug 'junegunn/goyo.vim'
+
 " better syntax
 Plug 'sheerun/vim-polyglot'
 
@@ -363,6 +366,7 @@ let g:ale_linters = {
         \ 'java': [ 'javac' ],
         \ 'javascript': [ 'eslint', 'tsserver' ],
         \ 'python': [ 'autopep', 'flake8'],
+        \ 'rust': ['cargo', 'clippy'],
         \}
 
 let g:ale_fixers = {
@@ -371,6 +375,7 @@ let g:ale_fixers = {
         \ 'javascript': [ 'prettier', 'eslint', 'remove_trailing_lines', 'trim_whitespace' ],
         \ 'python': [ 'yapf', 'remove_trailing_lines', 'trim_whitespace' ],
         \ 'go': [ 'gofmt', 'remove_trailing_lines', 'trim_whitespace' ],
+        \ 'rust': [ 'rustfmt' ],
         \}
 
 let g:ale_echo_msg_error_str = 'E'
@@ -396,6 +401,9 @@ let g:ale_python_pyls_config = {
         \  },
         \}
 let g:ale_linters_ignore = {'javascript':['tsserver']}
+let g:ale_rust_cargo_use_check = 0
+let g:ale_rust_cargo_use_clippy = 1
+" let g:ale_rust_cargo_include_features = 'async-std-runtime'
 nmap <silent> <C-p> <Plug>(ale_previous_wrap)
 nmap <silent> <C-n> <Plug>(ale_next_wrap)
 nmap <leader>l :lop<CR>

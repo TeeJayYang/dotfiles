@@ -114,4 +114,4 @@
   username = teejayyang
 
 [pull]
-	rebase = false
+    ff = only

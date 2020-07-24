@@ -7,7 +7,7 @@ set selection-clipboard clipboard
 
 # enable incremental search
 set incremental-search true
-#
+
 # Open document in "best-fit" mode by default.
 set adjust-open "best-fit"
 
@@ -20,3 +20,11 @@ map - zoom out
 
 map <Space> navigate next
 map <S-Space> navigate previous
+
+# colors according to onedark
+set recolor-lightcolor "#282C34"
+set recolor-darkcolor "#ABB2BF"
+
+set highlight-color "#D19A66"
+set highlight-active-color "#E5C07B"
+set highlight-transparency 0.1
