@@ -21,7 +21,7 @@ line-size = 1
 line-color = ${colors.primary}
 
 modules-left = i3
-modules-right = eth wlan pulseaudio battery date
+modules-right = eth wlan alsa pulseaudio battery date
 module-margin-left = 1
 module-margin-right = 1
 

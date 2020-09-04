@@ -77,11 +77,8 @@ vim:
     - "*": "~"
     - ".*": "~"
   dependencies:
-    - "vim"
+    - "gvim"
     - "curl"
-    - "pandoc"
-    - "python-pip"
-    - "python3-pip"
     - "ag"
   postlink:
     - "mkdir -p ~/.vim/undodir"
