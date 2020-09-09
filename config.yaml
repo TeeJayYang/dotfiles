@@ -1,10 +1,10 @@
 bin:
   link: "~/.bin"
 
-compton:
-  link: "~/.config/compton"
+picom:
+  link: "~/.config/picom"
   dependencies:
-    - "compton"
+    - "picom"
 
 dunst:
   link: "~/.config/dunst"
