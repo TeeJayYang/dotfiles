@@ -37,3 +37,9 @@ PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}:${PWD}\007"'
 export HISTSIZE=5000
 export HISTFILESIZE=10000
 export HISTCONTROL=ignoreboth
+
+export SOLN_ROOT="~/app-ess"
+export SPLUNK_HOME="/home/tyang/Downloads/splunk/splunk"
+export SPLUNK_DB="$SPLUNK_HOME/var/lib/splunk"
+export SPLUNKD_URI="https://localhost:8089"
+export HOSTNAME=`hostname`

@@ -288,12 +288,16 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo
 "" Ale
 let g:ale_linters = {
         \ 'python': [ 'flake8' ],
+        \ 'javascript': [ 'eslint' ],
+        \ 'javascriptreact': [ 'eslint' ],
         \}
 
 let g:ale_fixers = {
         \ '*': [ 'remove_trailing_lines', 'trim_whitespace' ],
         \ 'cpp': [ 'clang-format', 'remove_trailing_lines', 'trim_whitespace' ],
-        \ 'python': [ 'yapf' ],
+        \ 'python': [ 'yapf', 'remove_trailing_lines', 'trim_whitespace' ],
+        \ 'javascript': [ 'eslint', 'remove_trailing_lines', 'trim_whitespace' ],
+        \ 'javascriptreact': [ 'eslint', 'remove_trailing_lines', 'trim_whitespace' ],
         \}
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
