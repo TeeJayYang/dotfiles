@@ -143,6 +143,10 @@ au BufNewFile,BufRead Jenkinsfile setf groovy
 " ROS launch files
 au BufNewFile,BufRead *.launch setf xml
 
+" Markdown settings
+au BufRead,BufNewFile *.md setlocal textwidth=85
+autocmd FileType markdown setlocal spell
+
 " Auto close the quickfix window if it's the last window
 aug QFClose
   au!
