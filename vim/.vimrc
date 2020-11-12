@@ -127,6 +127,7 @@ noremap <leader>rr :source ~/.vimrc<CR>
 
 " copy and pasting from system clipbard
 noremap <leader>p "+p
+noremap <leader>P "+P
 noremap <leader>y "+y
 
 " noremap <leader>ss :%s/\(\ \+$\)//g<CR><C-o>
@@ -152,6 +153,9 @@ aug QFClose
   au!
   au WinEnter * if winnr('$') == 1 && &buftype == "quickfix"|q|endif
 aug END
+
+" polyglot (prevents disabling swapfiles)
+let g:polyglot_disabled = ['sensible']
 
 " Plugins===========================
 """ Plugins
@@ -223,6 +227,9 @@ Plug 'rbong/vim-crystalline'
 
 " code context
 " Plug 'wellle/context.vim'
+
+" python interactive env
+Plug 'metakirby5/codi.vim'
 call plug#end()
 
 " ===========================Plugins
