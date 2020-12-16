@@ -214,7 +214,7 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " highlighting for current search
-Plug 'peterrincker/vim-searchlight'
+" Plug 'peterrincker/vim-searchlight'
 
 " better syntax
 Plug 'sheerun/vim-polyglot'
@@ -226,10 +226,13 @@ Plug 'w0rp/ale'
 Plug 'rbong/vim-crystalline'
 
 " code context
-" Plug 'wellle/context.vim'
+Plug 'wellle/context.vim'
 
 " python interactive env
 Plug 'metakirby5/codi.vim'
+
+" markdown preview
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 call plug#end()
 
 " ===========================Plugins
