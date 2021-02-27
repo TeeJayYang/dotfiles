@@ -84,3 +84,6 @@ tags
 venv
 *~
 backend-venv
+
+# python
+__pycache__

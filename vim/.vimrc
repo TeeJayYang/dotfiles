@@ -149,6 +149,9 @@ aug QFClose
   au WinEnter * if winnr('$') == 1 && &buftype == "quickfix"|q|endif
 aug END
 
+"" Config for Polyglot
+let g:polyglot_disabled = ['latex', 'sensible']
+
 " Plugins===========================
 """ Plugins
 "" Download vim-plug if it does not exist
@@ -215,6 +218,9 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " highlighting for current search
 Plug 'peterrincker/vim-searchlight'
 
+" in-fine python interpretation
+Plug 'metakirby5/codi.vim'
+
 " ============= Document Writing ============
 "
 " markdown previewing
@@ -275,6 +281,7 @@ let g:vimtex_compiler_latexmk = {
     \ ],
     \}
 let g:vimtex_quickfix_open_on_warning = 0
+let g:vimtex_quickfix_mode = 0
 nmap <leader>q :copen<CR>
 
 " config for vim-pencil
@@ -353,9 +360,6 @@ command! MRU call fzf#run(fzf#wrap({
 
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'rounded': v:true} }
 
-"" Config for Polyglot
-let g:polyglot_disabled = ['latex']
-
 "" Color
 let g:colorizer_syntax = 1
 let g:colorizer_auto_filetype='css,html,conf,dosini,xdefaults'
@@ -365,14 +369,16 @@ let g:ale_linters = {
         \ 'cpp': [ 'gcc', 'clang', 'cppcheck' ],
         \ 'java': [ 'javac' ],
         \ 'javascript': [ 'eslint', 'tsserver' ],
+        \ 'typescriptreact': [ 'eslint', 'tsserver' ],
         \ 'python': [ 'autopep', 'flake8'],
-        \ 'rust': ['cargo', 'clippy'],
+        \ 'rust': ['cargo', 'clippy', 'rls'],
         \}
 
 let g:ale_fixers = {
         \ '*': [ 'remove_trailing_lines', 'trim_whitespace' ],
         \ 'cpp': [ 'clang-format', 'remove_trailing_lines', 'trim_whitespace' ],
         \ 'javascript': [ 'prettier', 'eslint', 'remove_trailing_lines', 'trim_whitespace' ],
+        \ 'typescriptreact': [ 'prettier', 'eslint', 'remove_trailing_lines', 'trim_whitespace' ],
         \ 'python': [ 'yapf', 'remove_trailing_lines', 'trim_whitespace' ],
         \ 'go': [ 'gofmt', 'remove_trailing_lines', 'trim_whitespace' ],
         \ 'rust': [ 'rustfmt' ],
@@ -402,7 +408,7 @@ let g:ale_python_pyls_config = {
         \}
 let g:ale_linters_ignore = {'javascript':['tsserver']}
 let g:ale_rust_cargo_use_check = 0
-let g:ale_rust_cargo_use_clippy = 1
+let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 " let g:ale_rust_cargo_include_features = 'async-std-runtime'
 nmap <silent> <C-p> <Plug>(ale_previous_wrap)
 nmap <silent> <C-n> <Plug>(ale_next_wrap)
