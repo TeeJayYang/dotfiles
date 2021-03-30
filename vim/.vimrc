@@ -371,7 +371,7 @@ let g:ale_linters = {
         \ 'javascript': [ 'eslint', 'tsserver' ],
         \ 'typescriptreact': [ 'eslint', 'tsserver' ],
         \ 'python': [ 'autopep', 'flake8'],
-        \ 'rust': ['cargo', 'clippy', 'rls'],
+        \ 'rust': ['cargo', 'clippy'],
         \}
 
 let g:ale_fixers = {
@@ -407,8 +407,10 @@ let g:ale_python_pyls_config = {
         \  },
         \}
 let g:ale_linters_ignore = {'javascript':['tsserver']}
-let g:ale_rust_cargo_use_check = 0
+let g:ale_rust_cargo_use_check = 1
+let g:ale_rust_cargo_check_tests = 1
 let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
+let g:ale_rust_rls_config = {'rust': {'clippy_preference': 'on'}}
 " let g:ale_rust_cargo_include_features = 'async-std-runtime'
 nmap <silent> <C-p> <Plug>(ale_previous_wrap)
 nmap <silent> <C-n> <Plug>(ale_next_wrap)
