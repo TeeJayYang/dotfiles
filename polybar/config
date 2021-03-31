@@ -37,8 +37,7 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 
 font-0 = Hack-Regular:pixelsize=14;1
-font-1 = DejaVu Sans Mono:fontformat=truetype:size=14:antialias=false;0
-font-2 = Font Awesome 5 Free:style=Solid:pixelsize=14;1
+font-1 = Font Awesome 5 Free:style=Solid:pixelsize=14;1
 
 [module/date]
 type = internal/date
