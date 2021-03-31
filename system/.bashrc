@@ -47,8 +47,3 @@ if [[ ! "$SSH_AUTH_SOCK" ]]; then
     eval "$(<"$XDG_RUNTIME_DIR/ssh-agent.env")" > /dev/null
     ssh-add &> /dev/null
 fi
-export PATH="$PATH:$HOME/.gem/ruby/2.6.0/bin"
-
-export PATH=$PATH:/home/teejayyang/bin
-
-source '/home/teejayyang/lib/azure-cli/az.completion'

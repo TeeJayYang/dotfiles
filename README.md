@@ -44,3 +44,6 @@ dotinstall
 ```
 
 4. Restart your computer and select i3 as your desktop environment
+
+# Random gotchas
+- delete the plugin from the ranger config to disable square icons, since we don't use nerdfont

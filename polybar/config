@@ -21,7 +21,7 @@ line-size = 1
 line-color = ${colors.primary}
 
 modules-left = i3
-modules-right = eth wlan pulseaudio battery date
+modules-right = filesystem eth wlan alsa battery date
 module-margin-left = 1
 module-margin-right = 1
 
@@ -181,3 +181,19 @@ format-disconnected =
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/filesystem]
+type = internal/fs
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-foreground = ${colors.foreground}
+format-connected = <ramp-capacity> <label-mounted>
+
+; Mountpoints to display
+mount-0 = /
+
+label-mounted = %mountpoint%: %free% (%percentage_free%%) free
