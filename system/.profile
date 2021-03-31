@@ -7,4 +7,4 @@ export PATH="$HOME/bin:$HOME/.bin:$HOME/.local:$HOME/.local/bin/:$PATH"
 #   fi
 # fi
 
-export PATH="$HOME/.cargo/bin:$PATH"
+source "$HOME/.cargo/env"
