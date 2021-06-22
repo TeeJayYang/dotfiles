@@ -371,7 +371,7 @@ let g:ale_linters = {
         \ 'javascript': [ 'eslint', 'tsserver' ],
         \ 'typescriptreact': [ 'eslint', 'tsserver' ],
         \ 'python': [ 'autopep', 'flake8'],
-        \ 'rust': ['cargo', 'clippy'],
+        \ 'rust': ['cargo', 'clippy', 'rls'],
         \}
 
 let g:ale_fixers = {

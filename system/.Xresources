@@ -1,44 +1,44 @@
 Xft.dpi:                        96
 Xft.antialias:                  true
 
-URxvt*termName:                 rxvt-unicode-256color
-URxvt*font:                     xft:Hack:style=Regular:pixelsize=16:antialias=true,\
+URxvt.termName:                 rxvt-unicode-256color
+URxvt.font:                     xft:Hack:style=Regular:pixelsize=16:antialias=true,\
                                 xft:Font Awesome 5 Free:style=Solid,\
                                 xft:Font Awesome 5 Free:style=Regular
-URxvt*depth: 32
+URxvt.depth: 32
 /* URxvt*lineSpace:                1 */
 /* URxvt*letterSpace:              -0.5 */
 /* URxvt*scrollBar:                true */
-URxvt*scrollBar:                false
-URxvt*scrollBar_right:          false
-URxvt*scrollcolor:              #ffffff
-URxvt*thickness:                5
-URxvt*internalBorder:           7
-URxvt*buffered:                 true
-URxvt*saveLines:                30000
-URxvt*hold:                     false
-URxvt*jumpScroll:               false
-URxvt*skipScroll:               false
-URxvt*urgentOnBell:             true
-URxvt*scrollstyle:              plain
-URxvt*keysym.Shift-Control-V:   eval:paste_clipboard
-URxvt*keysym.Shift-Control-C:   eval:selection_to_clipboard
-URxvt*iso14755:                 false
-URxvt*iso14755_52:              false
+URxvt.scrollBar:                false
+URxvt.scrollBar_right:          false
+URxvt.scrollcolor:              #ffffff
+URxvt.thickness:                5
+URxvt.internalBorder:           7
+URxvt.buffered:                 true
+URxvt.saveLines:                30000
+URxvt.hold:                     false
+URxvt.jumpScroll:               false
+URxvt.skipScroll:               false
+URxvt.urgentOnBell:             true
+URxvt.scrollstyle:              plain
+URxvt.keysym.Shift-Control-V:   eval:paste_clipboard
+URxvt.keysym.Shift-Control-C:   eval:selection_to_clipboard
+URxvt.iso14755:                 false
+URxvt.iso14755_52:              false
 /* URxvt*fading:                   15 */
-URxvt*scrollTtyOutput:          false
-URxvt*scrollWithBuffer:         true
-URxvt*scrollTtyKeypress:        true
+URxvt.scrollTtyOutput:          false
+URxvt.scrollWithBuffer:         true
+URxvt.scrollTtyKeypress:        true
 URxvt.perl-ext-common:          default,matcher
 URxvt.url-launcher:             /usr/bin/xdg-open
 URxvt.matcher.button:           3
 URxvt.matcher.pattern.1:        \\bwww\\.[\\w-]\\.[\\w./?&amp;@#-]*[\\w/-]
 
 
-URxvt*transparent: false
+URxvt.transparent: false
 ! shading - 0 to 99 darkens, 101 - 200 lightens
-URxvt*shading: 113
-URxvt*tintColor: #483D8B
+URxvt.shading: 113
+URxvt.tintColor: #483D8B
 
 ! Dracula Color Scheme
 /* *foreground:  #F8F8F2 */
