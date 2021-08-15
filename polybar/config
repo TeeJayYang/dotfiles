@@ -21,7 +21,7 @@ line-size = 1
 line-color = ${colors.primary}
 
 modules-left = i3
-modules-right = eth wlan pulseaudio battery date
+modules-right = filesystem eth wlan alsa battery date
 module-margin-left = 1
 module-margin-right = 1
 
@@ -37,8 +37,7 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 
 font-0 = Hack-Regular:pixelsize=14;1
-font-1 = DejaVu Sans Mono:fontformat=truetype:size=14:antialias=false;0
-font-2 = Font Awesome 5 Free:style=Solid:pixelsize=14;1
+font-1 = Font Awesome 5 Free:style=Solid:pixelsize=14;1
 
 [module/date]
 type = internal/date
@@ -181,3 +180,19 @@ format-disconnected =
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/filesystem]
+type = internal/fs
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-foreground = ${colors.foreground}
+format-connected = <ramp-capacity> <label-mounted>
+
+; Mountpoints to display
+mount-0 = /
+
+label-mounted = %mountpoint%: %free% (%percentage_free%%) free

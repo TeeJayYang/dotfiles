@@ -79,7 +79,8 @@ vim:
   dependencies:
     - "gvim"
     - "curl"
-    - "ag"
+    - "the_silver_searcher"
+    - "ctags"
   postlink:
     - "mkdir -p ~/.vim/undodir"
     - "mkdir -p ~/.vim/backup"
