@@ -214,8 +214,15 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " highlighting for current search
-" Plug 'peterrincker/vim-searchlight'
+Plug 'peterrincker/vim-searchlight'
 
+" in-line python interpretation
+Plug 'metakirby5/codi.vim'
+
+" ============= Document Writing ============
+"
+" markdown preview
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 " better syntax
 Plug 'sheerun/vim-polyglot'
 
@@ -227,12 +234,6 @@ Plug 'rbong/vim-crystalline'
 
 " code context
 Plug 'wellle/context.vim'
-
-" python interactive env
-Plug 'metakirby5/codi.vim'
-
-" markdown preview
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 call plug#end()
 
 " ===========================Plugins
@@ -301,18 +302,24 @@ let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo
 
 "" Ale
 let g:ale_linters = {
-        \ 'python': [ 'flake8' ],
-        \ 'javascript': [ 'eslint' ],
-        \ 'javascriptreact': [ 'eslint' ],
+        \ 'cpp': [ 'gcc', 'clang', 'cppcheck' ],
+        \ 'java': [ 'javac' ],
+        \ 'javascript': [ 'eslint', 'tsserver' ],
+        \ 'typescriptreact': [ 'eslint', 'tsserver' ],
+        \ 'python': [ 'autopep', 'flake8'],
+        \ 'rust': ['cargo', 'clippy', 'rls'],
         \}
 
 let g:ale_fixers = {
         \ '*': [ 'remove_trailing_lines', 'trim_whitespace' ],
         \ 'cpp': [ 'clang-format', 'remove_trailing_lines', 'trim_whitespace' ],
+        \ 'javascript': [ 'prettier', 'eslint', 'remove_trailing_lines', 'trim_whitespace' ],
+        \ 'typescriptreact': [ 'prettier', 'eslint', 'remove_trailing_lines', 'trim_whitespace' ],
         \ 'python': [ 'yapf', 'remove_trailing_lines', 'trim_whitespace' ],
-        \ 'javascript': [ 'eslint', 'remove_trailing_lines', 'trim_whitespace' ],
-        \ 'javascriptreact': [ 'eslint', 'remove_trailing_lines', 'trim_whitespace' ],
+        \ 'go': [ 'gofmt', 'remove_trailing_lines', 'trim_whitespace' ],
+        \ 'rust': [ 'rustfmt' ],
         \}
+
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_echo_msg_warning_str = 'W'
@@ -323,8 +330,22 @@ let g:ale_sign_column_always = 0
 let g:ale_open_list = 0
 let g:ale_virtualenv_dir_names = ['.env', '.venv', 'env', 've-py3', 've', 'virtualenv', 'venv']
 " let g:ale_echo_cursor = 0
-" let g:ale_completion_enabled = 1
-
+let g:ale_completion_enabled = 1
+let g:ale_python_pyls_config = {
+        \  'pyls': {
+        \    'plugins': {
+        \      'pycodestyle': {
+        \        'enabled': v:false
+        \      },
+        \    }
+        \  },
+        \}
+let g:ale_linters_ignore = {'javascript':['tsserver']}
+let g:ale_rust_cargo_use_check = 1
+let g:ale_rust_cargo_check_tests = 1
+let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
+let g:ale_rust_rls_config = {'rust': {'clippy_preference': 'on'}}
+" let g:ale_rust_cargo_include_features = 'async-std-runtime'
 nmap <silent> <C-p> <Plug>(ale_previous_wrap)
 nmap <silent> <C-n> <Plug>(ale_next_wrap)
 nmap <leader>l :lop<CR>
