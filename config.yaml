@@ -80,6 +80,7 @@ vim:
     - "gvim"
     - "curl"
     - "the_silver_searcher"
+    - "silversearcher-ag"
     - "ctags"
   postlink:
     - "mkdir -p ~/.vim/undodir"
