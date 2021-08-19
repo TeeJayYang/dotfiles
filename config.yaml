@@ -31,6 +31,7 @@ i3:
     - "ranger"
     - "feh"
     - "scrot"
+    - "ffmpeg"
   postlink:
     - "mkdir -p ~/.tmp"
 
@@ -61,6 +62,7 @@ redshift:
   link: "~/.config/"
   dependencies:
     - "redshift"
+    - "redshift-gtk"
 
 system:
   link: "~"
@@ -78,6 +80,7 @@ vim:
     - ".*": "~"
   dependencies:
     - "gvim"
+    - "vim-gtk3"
     - "curl"
     - "the_silver_searcher"
     - "silversearcher-ag"
