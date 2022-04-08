@@ -96,9 +96,9 @@ if executable('ag')
   let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
   " Using Ag for global grep
-  command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+  command -nargs=+ -complete=file -bar Search silent! grep! <args>|cwindow|redraw!
 
-  nnoremap ? :Ag<SPACE>
+  nnoremap ? :Search<SPACE>
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
@@ -155,7 +155,7 @@ aug QFClose
 aug END
 
 " polyglot (prevents disabling swapfiles)
-let g:polyglot_disabled = ['sensible']
+let g:polyglot_disabled = ['sensible', 'autoindent']
 
 " Plugins===========================
 """ Plugins
@@ -211,10 +211,11 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'christoomey/vim-tmux-navigator'
 
 " fzf
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " highlighting for current search
-Plug 'peterrincker/vim-searchlight'
+" Plug 'peterrincker/vim-searchlight'
 
 " in-line python interpretation
 Plug 'metakirby5/codi.vim'
@@ -283,21 +284,21 @@ function! s:tags_sink(lines) abort
   let &magic = l:magic
 endfunction
 
-command! Tags call fzf#run(fzf#wrap({
-      \ 'source':  'cat '.join(map(tagfiles(), 'fnamemodify(v:val, ":S")')).
-      \            '| grep -v -a ^!',
-      \ 'options': '+m -d "\t" --with-nth 1,4.. -n 1 --tiebreak=index --expect=ctrl-x,ctrl-v',
-      \ 'down': '40%',
-      \ 'sink*':    function('s:tags_sink'),
-      \ }))
-command! Buffers call fzf#run(fzf#wrap({
-      \ 'source': filter(map(range(1, bufnr('$')), 'bufname(v:val)'), 'len(v:val)'),
-      \ }))
+" command! Tags call fzf#run(fzf#wrap({
+"       \ 'source':  'cat '.join(map(tagfiles(), 'fnamemodify(v:val, ":S")')).
+"       \            '| grep -v -a ^!',
+"       \ 'options': '+m -d "\t" --with-nth 1,4.. -n 1 --tiebreak=index --expect=ctrl-x,ctrl-v',
+"       \ 'down': '40%',
+"       \ 'sink*':    function('s:tags_sink'),
+"       \ }))
+" command! Buffers call fzf#run(fzf#wrap({
+"       \ 'source': filter(map(range(1, bufnr('$')), 'bufname(v:val)'), 'len(v:val)'),
+"       \ }))
 command! MRU call fzf#run(fzf#wrap({
       \ 'source': v:oldfiles,
       \ }))
 
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'rounded': v:true} }
+" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6, 'highlight': 'Todo', 'rounded': v:true} }
 
 
 "" Ale
@@ -305,6 +306,7 @@ let g:ale_linters = {
         \ 'cpp': [ 'gcc', 'clang', 'cppcheck' ],
         \ 'java': [ 'javac' ],
         \ 'javascript': [ 'eslint', 'tsserver' ],
+        \ 'javascriptreact': [ 'eslint', 'tsserver' ],
         \ 'typescriptreact': [ 'eslint', 'tsserver' ],
         \ 'python': [ 'autopep', 'flake8'],
         \ 'rust': ['cargo', 'clippy', 'rls'],
@@ -314,6 +316,7 @@ let g:ale_fixers = {
         \ '*': [ 'remove_trailing_lines', 'trim_whitespace' ],
         \ 'cpp': [ 'clang-format', 'remove_trailing_lines', 'trim_whitespace' ],
         \ 'javascript': [ 'prettier', 'eslint', 'remove_trailing_lines', 'trim_whitespace' ],
+        \ 'javascriptreact': [ 'prettier', 'eslint', 'remove_trailing_lines', 'trim_whitespace' ],
         \ 'typescriptreact': [ 'prettier', 'eslint', 'remove_trailing_lines', 'trim_whitespace' ],
         \ 'python': [ 'yapf', 'remove_trailing_lines', 'trim_whitespace' ],
         \ 'go': [ 'gofmt', 'remove_trailing_lines', 'trim_whitespace' ],
@@ -385,14 +388,18 @@ colorscheme onedark
 " highlight ColorColumn ctermbg=magenta
 " call matchadd('ColorColumn', '\%91v', 100)
 
+" Add configs for fzf
+let $FZF_DEFAULT_OPTS="--ansi --height='80%' --bind='up:preview-up,alt-p:preview-up' --bind='down:preview-down,alt-n:preview-down' --bind='ctrl-r:toggle-all' --bind='ctrl-s:toggle-sort' --bind='?:toggle-preview' --preview-window='right:40%'"
+
 " Fzf keybindings
 nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>f :FZF<CR>
+nnoremap <leader>f :Files<CR>
 nnoremap <leader>m :MRU<CR>
 nnoremap <leader>t :Tags<CR>
+nnoremap <leader>/ :Ag<CR>
 
 " Fugitive keybindings
-nnoremap gb :Gblame<CR>
+nnoremap gb :Git blame<CR>
 
 " Write with sudo
 cmap w!! w !sudo tee > /dev/null %

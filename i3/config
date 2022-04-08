@@ -200,10 +200,10 @@ bindsym XF86AudioPrev exec mpc prev
 # exec --no-startup-id /usr/bin/xinput set-prop "ELAN1010:00 04F3:3012 Touchpad" "libinput Natural Scrolling Enabled" 1
 exec_always --no-startup-id setup-touchpad
 
-exec_always --no-startup-id "killall picom; picom --config ~/.config/picom/picom.conf"
+exec_always --no-startup-id setup-displays
+exec_always --no-startup-id "killall picom; picom --config ~/.config/picom/picom.conf --experimental-backend"
 exec_always --no-startup-id "killall dunst; dunst -c ~/.config/dunst/dunstrc"
 exec_always --no-startup-id nm-applet
-exec_always --no-startup-id setup-displays
 # exec_always feh --bg-fill ~/.config/i3/wallpaper.png ~/.config/i3/tallwall.png
 exec_always feh --bg-tile ~/.config/i3/wallpaper2.png
 exec_always --no-startup-id "xset r rate 200 50"
@@ -244,7 +244,7 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [title="Preferences$"] floating enable
 for_window [class="^.*"]    border pixel 2
-# smart_gaps on
+smart_gaps on
 gaps inner 10
 gaps outer 2
 
