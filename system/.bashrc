@@ -37,6 +37,8 @@ set -o vi
 
 [[ -f ~/.Xresources ]] && xrdb ~/.Xresources
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+source /usr/share/doc/fzf/examples/key-bindings.bash
+source /usr/share/doc/fzf/examples/completion.bash
 [ -f /usr/share/bash-completion/completions/git ] && source /usr/share/bash-completion/completions/git
 PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}:${PWD}\007"'
 export HISTSIZE=5000

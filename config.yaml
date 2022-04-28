@@ -1,3 +1,5 @@
+# sudo add-apt-repository -y ppa:kgilmer/speed-ricer
+
 bin:
   link: "~/.bin"
 
@@ -85,6 +87,7 @@ vim:
     - "the_silver_searcher"
     - "silversearcher-ag"
     - "ctags"
+    - "python3-pip"
   postlink:
     - "mkdir -p ~/.vim/undodir"
     - "mkdir -p ~/.vim/backup"
