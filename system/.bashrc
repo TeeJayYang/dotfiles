@@ -30,6 +30,7 @@ function ranger-cd {
 alias r='ranger-cd'
 alias ranger='ranger-cd'
 alias spython='~/Downloads/splunk/bin/python'
+alias ag='ag --pager="less -XFR"'
 
 export VISUAL=vim
 export EDITOR="$VISUAL"
@@ -43,13 +44,13 @@ source /usr/share/doc/fzf/examples/completion.bash
 PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}:${PWD}\007"'
 export HISTSIZE=5000
 export HISTFILESIZE=10000
-export HISTCONTROL=ignoreboth
+export HISTCONTROL=ignoreboth:erasedups
 
 export SOLN_ROOT="~/"
 export SPLUNK_HOME="/home/tyang/Downloads/splunk"
 export SPLUNK_DB="$SPLUNK_HOME/var/lib/splunk"
 export SPLUNK_ETC="$SPLUNK_HOME/etc"
-export SPLUNKD_URI="https://localhost:8089"
+export SPLUNKD_URI="https://localhost:8089/"
 export HOSTNAME=`hostname`
 export APPS_ROOT="$SPLUNK_ETC"
 alias splunk="$SPLUNK_HOME/bin/splunk"
@@ -60,3 +61,6 @@ export NVM_DIR="$HOME/.nvm"
 
 alias orca='splunk_orca'
 export BAT_THEME="TwoDark"
+if [ -f ~/todo ]; then
+    cat ~/todo
+fi

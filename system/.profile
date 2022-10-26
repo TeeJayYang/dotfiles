@@ -6,3 +6,6 @@
 #   fi
 # fi
 export PATH="$HOME/bin:$HOME/.bin:$HOME/.local:$HOME/.local/bin/:$PATH"
+if [ -f ~/todo ]; then
+    cat ~/todo
+fi

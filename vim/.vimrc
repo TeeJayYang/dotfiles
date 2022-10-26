@@ -90,7 +90,7 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 " use ag for vim grep
 if executable('ag')
   " Use ag over grep
-  set grepprg=ag\ --nogroup\ --nocolor
+  set grepprg=ag\ --nogroup\
 
   " Use ag for FZF
   let $FZF_DEFAULT_COMMAND = 'ag -g ""'
@@ -409,3 +409,7 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
     \| exe "normal! g'\"" | endif
 endif
+
+" bind comment to ctrl /
+nmap <C-_> gcc
+vmap <C-_> gc
