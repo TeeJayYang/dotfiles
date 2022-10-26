@@ -37,4 +37,4 @@ do
   ffmpeg -loglevel quiet -i $IMG -i $FILE -y -filter_complex "overlay=$PX:$PY" -vframes 1 $IMG
 done
 
-i3lock -e -i $FILE 
+i3lock -e -i $IMG
