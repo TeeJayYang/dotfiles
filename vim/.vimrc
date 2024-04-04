@@ -84,9 +84,6 @@ xnoremap ~ ~gv
 xnoremap <C-a> <C-a>gv
 xnoremap <C-x> <C-x>gv
 
-" Grep for word under cursor
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-
 " use ag for vim grep
 if executable('ag')
   " Use ag over grep
@@ -155,7 +152,7 @@ aug QFClose
 aug END
 
 " polyglot (prevents disabling swapfiles)
-let g:polyglot_disabled = ['sensible', 'autoindent']
+let g:polyglot_disabled = ['sensible', 'autoindent', 'csv', 'pascal']
 
 " Plugins===========================
 """ Plugins
@@ -175,6 +172,8 @@ call plug#begin('~/.vim/bundle')
 
 " Regular color scheme
 Plug 'joshdick/onedark.vim'
+" better syntax
+Plug 'sheerun/vim-polyglot'
 
 "" Highlighting for transparent background
 highlight Normal ctermbg=none
@@ -224,8 +223,6 @@ Plug 'metakirby5/codi.vim'
 "
 " markdown preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-" better syntax
-Plug 'sheerun/vim-polyglot'
 
 " linting
 Plug 'w0rp/ale'
@@ -314,13 +311,10 @@ let g:ale_linters = {
 
 let g:ale_fixers = {
         \ '*': [ 'remove_trailing_lines', 'trim_whitespace' ],
-        \ 'cpp': [ 'clang-format', 'remove_trailing_lines', 'trim_whitespace' ],
-        \ 'javascript': [ 'prettier', 'eslint', 'remove_trailing_lines', 'trim_whitespace' ],
-        \ 'javascriptreact': [ 'prettier', 'eslint', 'remove_trailing_lines', 'trim_whitespace' ],
-        \ 'typescriptreact': [ 'prettier', 'eslint', 'remove_trailing_lines', 'trim_whitespace' ],
-        \ 'python': [ 'yapf', 'remove_trailing_lines', 'trim_whitespace' ],
-        \ 'go': [ 'gofmt', 'remove_trailing_lines', 'trim_whitespace' ],
         \ 'rust': [ 'rustfmt' ],
+        \ 'javascript': [ 'prettier' ],
+        \ 'javascriptreact': [ 'prettier' ],
+        \ 'typescriptreact': [ 'prettier' ],
         \}
 
 let g:ale_echo_msg_error_str = 'E'
@@ -361,7 +355,7 @@ highlight clear SignColumn
 function! StatusLine(current)
   return (a:current ? crystalline#mode() . '%#Crystalline#' : '%#CrystallineInactive#')
         \ . ' %f%h%w%m%r '
-        \ . (a:current ? '%#CrystallineFill# %{fugitive#head()} ' : '')
+        \ . (a:current ? '%#CrystallineFill# %{fugitive#Head()} ' : '')
         \ . '%=' . (a:current ? '%#Crystalline# %{&paste?"PASTE ":""}%{&spell?"SPELL ":""}' . crystalline#mode_color() : '')
         \ . ' %{&ft}[%{&enc}][%{&ffs}] %l/%L %c%V %P '
 endfunction
@@ -400,6 +394,7 @@ nnoremap <leader>/ :Ag<CR>
 
 " Fugitive keybindings
 nnoremap gb :Git blame<CR>
+nnoremap gm :Git mergetool<CR>
 
 " Write with sudo
 cmap w!! w !sudo tee > /dev/null %
