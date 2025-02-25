@@ -29,7 +29,6 @@ function ranger-cd {
 }
 alias r='ranger-cd'
 alias ranger='ranger-cd'
-alias spython='~/Downloads/splunk/bin/python'
 alias ag='ag --pager="less -XFR"'
 
 export VISUAL=vim
@@ -46,21 +45,33 @@ export HISTSIZE=5000
 export HISTFILESIZE=10000
 export HISTCONTROL=ignoreboth:erasedups
 
-export SOLN_ROOT="~/"
+export SOLN_ROOT="$HOME/"
 export SPLUNK_HOME="/home/tyang/Downloads/splunk"
 export SPLUNK_DB="$SPLUNK_HOME/var/lib/splunk"
 export SPLUNK_ETC="$SPLUNK_HOME/etc"
 export SPLUNKD_URI="https://localhost:8089/"
+export SPLUNKD="$SPLUNKD_URI"
+export SPLUNKADMINUSERNAME="admin"
+export SPLUNKPASSWORD="changeme"
+alias spython="/home/tyang/Downloads/splunk/bin/python3"
+# export SPLUNK_SOURCE="~/main"
+# export UI_SOURCE="~/splunkcore-web-ui"
+export SPLUNK_SOURCE="/home/tyang/splunkcore-web-ui"
 export HOSTNAME=`hostname`
 export APPS_ROOT="$SPLUNK_ETC"
 alias splunk="$SPLUNK_HOME/bin/splunk"
+alias ess="cd $SOLN_ROOT/app-ess/packages/app-ess"
+alias blue="cd $HOME/blueridge-app/packages/ui"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 alias orca='splunk_orca'
+alias kset='xset r rate 200 50'
 export BAT_THEME="TwoDark"
 if [ -f ~/todo ]; then
     cat ~/todo
 fi
+alias gp='globalprotect connect --gateway sjc1-gw4.splunk.com -u tyang'
+alias gp2='globalprotect connect --gateway sfo1-gw4.splunk.com -u tyang'
