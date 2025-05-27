@@ -39,6 +39,7 @@ URxvt.transparent: false
 ! shading - 0 to 99 darkens, 101 - 200 lightens
 URxvt.shading: 113
 URxvt.tintColor: #483D8B
+URxvt.geometry: 80x250+0+0
 
 ! Dracula Color Scheme
 /* *foreground:  #F8F8F2 */

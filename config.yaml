@@ -1,5 +1,3 @@
-# sudo add-apt-repository -y ppa:kgilmer/speed-ricer
-
 bin:
   link: "~/.bin"
 
@@ -26,6 +24,7 @@ i3:
     - "*": "~/.config/i3"
     - ".*": "~/.config/i3"
   dependencies:
+    - "i3"
     - "i3lock"
     - "rofi"
     - "xbacklight"
@@ -34,6 +33,7 @@ i3:
     - "feh"
     - "scrot"
     - "ffmpeg"
+    - "arandr"
   postlink:
     - "mkdir -p ~/.tmp"
 
@@ -86,7 +86,7 @@ vim:
     - "curl"
     - "the_silver_searcher"
     - "silversearcher-ag"
-    - "ctags"
+    - "universal-ctags"
     - "python3-pip"
   postlink:
     - "mkdir -p ~/.vim/undodir"

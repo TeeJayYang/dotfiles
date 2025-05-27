@@ -201,7 +201,7 @@ bindsym XF86AudioPrev exec mpc prev
 exec_always --no-startup-id setup-touchpad
 
 exec_always --no-startup-id setup-displays
-exec_always --no-startup-id "killall picom; picom --config ~/.config/picom/picom.conf --experimental-backend"
+exec_always --no-startup-id "killall picom; picom --config ~/.config/picom/picom.conf"
 exec_always --no-startup-id "killall dunst; dunst -c ~/.config/dunst/dunstrc"
 exec_always --no-startup-id nm-applet
 # exec_always feh --bg-fill ~/.config/i3/wallpaper.png ~/.config/i3/tallwall.png

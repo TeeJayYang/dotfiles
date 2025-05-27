@@ -38,7 +38,7 @@ set -o vi
 [[ -f ~/.Xresources ]] && xrdb ~/.Xresources
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 source /usr/share/doc/fzf/examples/key-bindings.bash
-source /usr/share/doc/fzf/examples/completion.bash
+source /usr/share/doc/fzf/examples/completion.zsh
 [ -f /usr/share/bash-completion/completions/git ] && source /usr/share/bash-completion/completions/git
 PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}:${PWD}\007"'
 export HISTSIZE=5000
@@ -75,3 +75,4 @@ if [ -f ~/todo ]; then
 fi
 alias gp='globalprotect connect --gateway sjc1-gw4.splunk.com -u tyang'
 alias gp2='globalprotect connect --gateway sfo1-gw4.splunk.com -u tyang'
+alias settings='XDG_CURRENT_DESKTOP=GNOME gnome-control-center'
