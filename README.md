@@ -15,7 +15,7 @@ dmenu           ->  rofi
 ```
 
 # Screenshots
-![](screenshots/2018_07_14.png "Fake Dirty")
+![](screenshots/dirty.png "Dirty")
 
 # Installation
 
@@ -25,18 +25,13 @@ git clone https://github.com/TeeJayYang/dotfiles.git
 cd dotfiles
 ```
 
-2. Install i3 gaps (works on Solus and Ubuntu, untested on other distros)
+2. Create and source a virtual environment
 ```
-sudo bash installi3gaps.sh
-```
-
-3. Create and source a virtual environment
-```
-virtualenv --python=python3.6 venv
+python -m venv venv
 source venv/bin/activate
 ```
 
-3. Install and run `dotinstall` (and compile `xcwd` from source optionally)
+3. Install and run `dotinstall`
 ```
 pip install dotinstall
 dotinstall
