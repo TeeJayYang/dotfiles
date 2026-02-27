@@ -31,9 +31,10 @@ i3:
     - "xclip"
     - "ranger"
     - "feh"
-    - "scrot"
+    - "flameshot"
     - "ffmpeg"
     - "arandr"
+    - "brightnessctl"
   postlink:
     - "mkdir -p ~/.tmp"
 

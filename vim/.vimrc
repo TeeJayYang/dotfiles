@@ -305,7 +305,7 @@ let g:ale_linters = {
         \ 'javascript': [ 'eslint', 'tsserver' ],
         \ 'javascriptreact': [ 'eslint', 'tsserver' ],
         \ 'typescriptreact': [ 'eslint', 'tsserver' ],
-        \ 'python': [ 'autopep', 'flake8'],
+        \ 'python': [ 'autopep', 'flake8' ],
         \ 'rust': ['cargo', 'clippy', 'rls'],
         \}
 
@@ -342,6 +342,7 @@ let g:ale_rust_cargo_use_check = 1
 let g:ale_rust_cargo_check_tests = 1
 let g:ale_rust_cargo_use_clippy = executable('cargo-clippy')
 let g:ale_rust_rls_config = {'rust': {'clippy_preference': 'on'}}
+let g:ale_python_flake8_options = '--ignore=E402,E501,E203'
 " let g:ale_rust_cargo_include_features = 'async-std-runtime'
 nmap <silent> <C-p> <Plug>(ale_previous_wrap)
 nmap <silent> <C-n> <Plug>(ale_next_wrap)
@@ -435,6 +436,7 @@ nnoremap <leader>f :Files<CR>
 nnoremap <leader>m :MRU<CR>
 nnoremap <leader>t :Tags<CR>
 nnoremap <leader>/ :Ag<CR>
+nnoremap <leader>sf :%!black -q -<CR>
 
 " Fugitive keybindings
 nnoremap gb :Git blame<CR>

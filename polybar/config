@@ -43,7 +43,7 @@ font-1 = Font Awesome 5 Free:style=Solid:pixelsize=14;1
 type = internal/date
 date = %a %b %d %Y
 
-time = %I:%M %p
+time = %I:%M %p 
 
 label = %date% %time%
 

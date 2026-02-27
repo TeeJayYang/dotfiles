@@ -47,7 +47,8 @@ bindsym $mod+Shift+apostrophe exec "rofi -show ssh -i"
 bindsym $mod+apostrophe exec "rofi -show run -i"
 
 # Screenshotting stuff
-bindsym --release Shift+Print exec --no-startup-id rm ~/.tmp/tmp.png -f && scrot -s ~/.tmp/tmp.png && xclip ~/.tmp/tmp.png -selection clipboard -t image/png && notify-send -u "low" "Took screenshot (area)"
+# bindsym --release Shift+Print exec --no-startup-id rm ~/.tmp/tmp.png -f && scrot -s ~/.tmp/tmp.png && xclip ~/.tmp/tmp.png -selection clipboard -t image/png && notify-send -u "low" "Took screenshot (area)"
+bindsym --release Shift+Print exec flameshot gui
 
 # change focus
 bindsym $mod+h focus left
