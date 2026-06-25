@@ -40,10 +40,10 @@ bindsym $mod+Shift+q kill
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
-bindsym $mod+semicolon exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu -i'
-bindsym $mod+Shift+semicolon exec "rofi -show window -i"
-bindsym $mod+Shift+apostrophe exec "rofi -show ssh -i"
-bindsym $mod+apostrophe exec "rofi -show run -i"
+bindsym $mod+semicolon exec --no-startup-id i3-dmenu-desktop --dmenu='rofi -dmenu -i -theme onedark'
+bindsym $mod+Shift+semicolon exec "rofi -show window -i -theme onedark"
+bindsym $mod+Shift+apostrophe exec "rofi -show ssh -i -theme onedark"
+bindsym $mod+apostrophe exec "rofi -show run -i -theme onedark"
 
 # Screenshotting stuff
 bindsym --release Shift+Print exec --no-startup-id rm ~/.tmp/tmp.png -f && scrot -s ~/.tmp/tmp.png && xclip ~/.tmp/tmp.png -selection clipboard -t image/png && notify-send -u "low" "Took screenshot (area)"
@@ -52,6 +52,7 @@ bindsym --release Shift+Print exec --no-startup-id rm ~/.tmp/tmp.png -f && scrot
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
+
 bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:

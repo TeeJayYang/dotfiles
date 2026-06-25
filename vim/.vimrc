@@ -371,7 +371,7 @@ let g:ale_linters = {
         \ 'javascript': [ 'eslint', 'tsserver' ],
         \ 'typescriptreact': [ 'eslint', 'tsserver' ],
         \ 'python': [ 'autopep', 'flake8'],
-        \ 'rust': ['cargo', 'clippy', 'rls'],
+        \ 'rust': ['cargo', 'clippy'],
         \}
 
 let g:ale_fixers = {
@@ -458,7 +458,7 @@ nnoremap <leader>m :MRU<CR>
 nnoremap <leader>t :Tags<CR>
 
 " Fugitive keybindings
-nnoremap gb :Gblame<CR>
+nnoremap gb :Git blame<CR>
 
 " Write with sudo
 cmap w!! w !sudo tee > /dev/null %

@@ -47,3 +47,4 @@ if [[ ! "$SSH_AUTH_SOCK" ]]; then
     eval "$(<"$XDG_RUNTIME_DIR/ssh-agent.env")" > /dev/null
     ssh-add &> /dev/null
 fi
+source /usr/share/nvm/init-nvm.sh
