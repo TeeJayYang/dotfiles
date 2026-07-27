@@ -87,3 +87,5 @@ backend-venv
 
 _gitignore_*
 __pycache__/
+
+**/.claude/settings.local.json

@@ -27,7 +27,7 @@
   spacing: 0;
   background-color: transparent;
 
-  font: "Knack Nerd Font 14";
+  font: "Knack Nerd Font 20";
   text-color: @text;
 }
 
@@ -42,7 +42,7 @@ mainbox {
 }
 
 inputbar {
-  margin: 0px 0px 20px 0px;
+  margin: 0px 0px 28px 0px;
   children: [prompt, textbox-prompt-colon, entry, case-indicator];
 }
 
@@ -57,20 +57,20 @@ textbox-prompt-colon {
 }
 
 entry {
-  margin: 0px 10px;
+  margin: 0px 14px;
 }
 
 listview {
-  spacing: 5px;
+  spacing: 7px;
   dynamic: true;
   scrollbar: false;
 }
 
 element {
-  padding: 5px;
+  padding: 7px;
   text-color: @text-alt;
   highlight: bold #95ee8f; /* green */
-  border-radius: 3px;
+  border-radius: 4px;
 }
 
 element selected {
@@ -87,15 +87,15 @@ element active, element selected active {
 }
 
 message {
-  padding: 5px;
-  border-radius: 3px;
+  padding: 7px;
+  border-radius: 4px;
   background-color: @emphasis;
   border: 1px;
   border-color: @cyan;
 }
 
 button selected {
-  padding: 5px;
-  border-radius: 3px;
+  padding: 7px;
+  border-radius: 4px;
   background-color: @emphasis;
 }

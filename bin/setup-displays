@@ -3,17 +3,17 @@ if (xrandr | grep -q "\bDP-3-1 connected\b") && (xrandr | grep -q "\bDP-3-3 conn
     # xrandr --output eDP-1 --primary --mode 2560x1440 --pos 0x1204 --rotate normal --output DP-1 --off --output DP-2 --off --output DP-3 --off --output DP-3-1 --mode 1920x1080 --pos 2560x0 --rotate left --output DP-3-2 --off --output DP-3-3 --mode 1920x1080 --pos 3640x420 --rotate normal
     xrandr --output DP-3 --off
     xrandr --output DP-2-2 --off
-    xrandr --output eDP-1 --primary --mode 2560x1600 --pos 0x1080 --rotate normal --output DP-1 --off --output DP-2 --off --output DP-3 --off --output DP-3-1 --mode 1920x1080 --pos 2560x1080 --rotate normal --output DP-3-2 --off --output DP-3-3 --mode 1920x1080 --pos 2560x0 --rotate normal
+    xrandr --output eDP-1 --primary --mode 3840x2400 --pos 0x1080 --rotate normal --output DP-1 --off --output DP-2 --off --output DP-3 --off --output DP-3-1 --mode 1920x1080 --pos 2560x1080 --rotate normal --output DP-3-2 --off --output DP-3-3 --mode 1920x1080 --pos 2560x0 --rotate normal
 elif (xrandr | grep -q "\bDP-3 connected\b") && (xrandr | grep -q "\bDP-2-2 connected\b") ; then
     xrandr --output DP-3-1 --off
     xrandr --output DP-3-3 --off
-    xrandr --output eDP-1 --primary --mode 2560x1600 --pos 4880x445 --rotate normal --output DP-1 --off --output DP-2 --off --output DP-3 --mode 3440x1440 --pos 1440x445 --rotate normal --output DP-3-1 --off --output DP-3-2 --off --output DP-3-3 --off --output DP-2-1 --off --output DP-2-2 --mode 2560x1440 --pos 0x0 --rotate left --output DP-2-3 --off
+    xrandr --output eDP-1 --primary --mode 3840x2400 --pos 4880x445 --rotate normal --output DP-1 --off --output DP-2 --off --output DP-3 --mode 3440x1440 --pos 1440x445 --rotate normal --output DP-3-1 --off --output DP-3-2 --off --output DP-3-3 --off --output DP-2-1 --off --output DP-2-2 --mode 2560x1440 --pos 0x0 --rotate left --output DP-2-3 --off
 elif (xrandr | grep -q "\bDP-3 connected\b") ; then
     xrandr --output DP-3-1 --off
     xrandr --output DP-3-3 --off
-    xrandr --output eDP-1 --primary --mode 2560x1600 --pos 3440x0 --rotate normal --output DP-1 --off --output DP-2 --off --output DP-3 --mode 3440x1440 --pos 0x0 --rotate normal --output DP-3-1 --off --output DP-3-2 --off --output DP-3-3 --off --output DP-2-1 --off --output DP-2-2 --off --output DP-2-3 --off
+    xrandr --output eDP-1 --primary --mode 3840x2400 --pos 3440x0 --rotate normal --output DP-1 --off --output DP-2 --off --output DP-3 --mode 3440x1440 --pos 0x0 --rotate normal --output DP-3-1 --off --output DP-3-2 --off --output DP-3-3 --off --output DP-2-1 --off --output DP-2-2 --off --output DP-2-3 --off
 else
-    xrandr --output eDP-1 --mode 2560x1600 --primary
+    xrandr --output eDP-1 --mode 3840x2400 --primary
     xrandr --output DP-3-1 --off
     xrandr --output DP-3-3 --off
     xrandr --output DP-3 --off

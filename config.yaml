@@ -73,6 +73,11 @@ system:
   - "rxvt-unicode"
   - "xrdb"
 
+tmux:
+  link: "~"
+  dependencies:
+    - "tmux"
+
 # Install `system.devel` component
 # sudo eopkg install -c system.devel
 vim:

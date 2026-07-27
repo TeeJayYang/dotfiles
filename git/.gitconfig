@@ -121,3 +121,5 @@
   username = teejayang
 [pull]
 	ff = only
+[url "ssh://git@cd.splunkdev.com/"]
+    insteadOf = https://cd.splunkdev.com/
